@@ -40,12 +40,12 @@ public class AlberoAdottato {
         this.quantita = quantita;
     }
 
-    public AlberoAdottato getAlberoAdottato() {
-        return alberoAdottato;
+    public Albero getAlbero() {
+        return albero;
     }
 
-    public void setAlberoAdottato(AlberoAdottato alberoAdottato) {
-        this.alberoAdottato = alberoAdottato;
+    public void setAlbero(Albero albero) {
+        this.albero = albero;
     }
 
     public Adozione getAdozione() {
