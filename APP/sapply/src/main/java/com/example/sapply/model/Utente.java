@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "utenti")
+@Table (name = "utente")
 public class Utente {
 
     @Id
@@ -41,23 +41,23 @@ public class Utente {
     @Column(name = "data_iscrizione")
     private LocalDate dataIscrizione;
 
-    @OneToMany
-            (
-                    mappedBy = "utenti",
-                    cascade = CascadeType.REMOVE,
-                    fetch = FetchType.EAGER,
-                    orphanRemoval = true
-            )
-    private List<Adozione> adozioni = new ArrayList<>();
+//    @OneToMany
+//            (
+//                    mappedBy = "utenti",
+//                    cascade = CascadeType.REMOVE,
+//                    fetch = FetchType.EAGER,
+//                    orphanRemoval = true
+//            )
+//    private List<Adozione> adozioni = new ArrayList<>();
 
-    @OneToMany
-            (
-                    mappedBy = "utenti",
-                    cascade = CascadeType.REMOVE,
-                    fetch = FetchType.EAGER,
-                    orphanRemoval = true
-            )
-    private List<Recensione> recensioni = new ArrayList<>();
+//    @OneToMany
+//            (
+//                    mappedBy = "utenti",
+//                    cascade = CascadeType.REMOVE,
+//                    fetch = FetchType.EAGER,
+//                    orphanRemoval = true
+//            )
+//    private List<Recensione> recensioni = new ArrayList<>();
 
     // GETTER SETTER
 
@@ -141,19 +141,19 @@ public class Utente {
         this.dataIscrizione = dataIscrizione;
     }
 
-    public List<Adozione> getAdozioni() {
-        return adozioni;
-    }
-
-    public void setAdozioni(List<Adozione> adozioni) {
-        this.adozioni = adozioni;
-    }
-
-    public List<Recensione> getRecensioni() {
-        return recensioni;
-    }
-
-    public void setRecensioni(List<Recensione> recensioni) {
-        this.recensioni = recensioni;
-    }
+//    public List<Adozione> getAdozioni() {
+//        return adozioni;
+//    }
+//
+//    public void setAdozioni(List<Adozione> adozioni) {
+//        this.adozioni = adozioni;
+//    }
+//
+//    public List<Recensione> getRecensioni() {
+//        return recensioni;
+//    }
+//
+//    public void setRecensioni(List<Recensione> recensioni) {
+//        this.recensioni = recensioni;
+//    }
 }

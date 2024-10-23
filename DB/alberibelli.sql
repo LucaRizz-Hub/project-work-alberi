@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ott 22, 2024 alle 18:13
+-- Creato il: Ott 23, 2024 alle 17:24
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.0.28
 
@@ -24,25 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `adozioni`
+-- Struttura della tabella `adozione`
 --
 
-CREATE TABLE `adozioni` (
+CREATE TABLE `adozione` (
   `id` int(11) NOT NULL,
   `id_albero` int(11) DEFAULT NULL,
   `id_utente` int(11) DEFAULT NULL,
-  `recensione` text DEFAULT NULL,
-  `data_recensione` timestamp NOT NULL DEFAULT current_timestamp(),
-  `quantità` int(11) DEFAULT NULL
+  `data_adozione` date NOT NULL DEFAULT current_timestamp(),
+  `quantità` int(11) DEFAULT NULL,
+  `costo_totale` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `alberi`
+-- Struttura della tabella `albero`
 --
 
-CREATE TABLE `alberi` (
+CREATE TABLE `albero` (
   `id` int(11) NOT NULL,
   `nome_albero` varchar(100) NOT NULL,
   `specie` varchar(100) NOT NULL,
@@ -58,23 +58,10 @@ CREATE TABLE `alberi` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `alberi_adottati`
+-- Struttura della tabella `recensione`
 --
 
-CREATE TABLE `alberi_adottati` (
-  `id` int(11) NOT NULL,
-  `fk_id_albero` int(11) DEFAULT NULL,
-  `fk_id_adozione` int(11) DEFAULT NULL,
-  `quantità` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `recensioni`
---
-
-CREATE TABLE `recensioni` (
+CREATE TABLE `recensione` (
   `id` int(11) NOT NULL,
   `id_adozione` int(11) DEFAULT NULL,
   `valutazione` int(11) DEFAULT NULL CHECK (`valutazione` between 1 and 5),
@@ -85,10 +72,10 @@ CREATE TABLE `recensioni` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utenti`
+-- Struttura della tabella `utente`
 --
 
-CREATE TABLE `utenti` (
+CREATE TABLE `utente` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(50) NOT NULL,
@@ -106,38 +93,30 @@ CREATE TABLE `utenti` (
 --
 
 --
--- Indici per le tabelle `adozioni`
+-- Indici per le tabelle `adozione`
 --
-ALTER TABLE `adozioni`
+ALTER TABLE `adozione`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_albero` (`id_albero`),
   ADD KEY `id_utente` (`id_utente`);
 
 --
--- Indici per le tabelle `alberi`
+-- Indici per le tabelle `albero`
 --
-ALTER TABLE `alberi`
+ALTER TABLE `albero`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `alberi_adottati`
+-- Indici per le tabelle `recensione`
 --
-ALTER TABLE `alberi_adottati`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_id_albero` (`fk_id_albero`),
-  ADD KEY `fk_id_adozione` (`fk_id_adozione`);
-
---
--- Indici per le tabelle `recensioni`
---
-ALTER TABLE `recensioni`
+ALTER TABLE `recensione`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_adozione` (`id_adozione`);
 
 --
--- Indici per le tabelle `utenti`
+-- Indici per le tabelle `utente`
 --
-ALTER TABLE `utenti`
+ALTER TABLE `utente`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`);
@@ -147,33 +126,27 @@ ALTER TABLE `utenti`
 --
 
 --
--- AUTO_INCREMENT per la tabella `adozioni`
+-- AUTO_INCREMENT per la tabella `adozione`
 --
-ALTER TABLE `adozioni`
+ALTER TABLE `adozione`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `alberi`
+-- AUTO_INCREMENT per la tabella `albero`
 --
-ALTER TABLE `alberi`
+ALTER TABLE `albero`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `alberi_adottati`
+-- AUTO_INCREMENT per la tabella `recensione`
 --
-ALTER TABLE `alberi_adottati`
+ALTER TABLE `recensione`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `recensioni`
+-- AUTO_INCREMENT per la tabella `utente`
 --
-ALTER TABLE `recensioni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `utenti`
---
-ALTER TABLE `utenti`
+ALTER TABLE `utente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -181,24 +154,17 @@ ALTER TABLE `utenti`
 --
 
 --
--- Limiti per la tabella `adozioni`
+-- Limiti per la tabella `adozione`
 --
-ALTER TABLE `adozioni`
-  ADD CONSTRAINT `adozioni_ibfk_1` FOREIGN KEY (`id_albero`) REFERENCES `alberi` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `adozioni_ibfk_2` FOREIGN KEY (`id_utente`) REFERENCES `utenti` (`id`) ON DELETE CASCADE;
+ALTER TABLE `adozione`
+  ADD CONSTRAINT `adozione_ibfk_1` FOREIGN KEY (`id_albero`) REFERENCES `albero` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `adozione_ibfk_2` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`id`) ON DELETE CASCADE;
 
 --
--- Limiti per la tabella `alberi_adottati`
+-- Limiti per la tabella `recensione`
 --
-ALTER TABLE `alberi_adottati`
-  ADD CONSTRAINT `alberi_adottati_ibfk_1` FOREIGN KEY (`fk_id_albero`) REFERENCES `alberi` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `alberi_adottati_ibfk_2` FOREIGN KEY (`fk_id_adozione`) REFERENCES `adozioni` (`id`) ON DELETE CASCADE;
-
---
--- Limiti per la tabella `recensioni`
---
-ALTER TABLE `recensioni`
-  ADD CONSTRAINT `recensioni_ibfk_1` FOREIGN KEY (`id_adozione`) REFERENCES `adozioni` (`id`) ON DELETE CASCADE;
+ALTER TABLE `recensione`
+  ADD CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`id_adozione`) REFERENCES `adozione` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
