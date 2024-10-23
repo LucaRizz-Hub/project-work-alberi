@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "adozioni")
+@Table(name = "adozione")
 public class Adozione {
 
     @Id
@@ -20,11 +20,14 @@ public class Adozione {
     @JoinColumn(name = "id_utente", referencedColumnName = "id")
     private Utente utente;
 
-    @Column(name = "data_recensione")
-    private LocalDate dataRecensione;
+    @Column(name = "data_adozione")
+    private LocalDate dataAdozione;
 
     @Column(name = "quantità")
     private int quantita;
+
+    @Column (name = "costo_totale")
+    private  int costoTotale;
 
     public int getId() {
         return id;
@@ -50,12 +53,12 @@ public class Adozione {
         this.utente = utente;
     }
 
-    public LocalDate getDataRecensione() {
-        return dataRecensione;
+    public LocalDate getDataAdozione() {
+        return dataAdozione;
     }
 
-    public void setDataRecensione(LocalDate dataRecensione) {
-        this.dataRecensione = dataRecensione;
+    public void setDataAdozione(LocalDate dataAdozione) {
+        this.dataAdozione = dataAdozione;
     }
 
     public int getQuantita() {
@@ -64,5 +67,13 @@ public class Adozione {
 
     public void setQuantita(int quantita) {
         this.quantita = quantita;
+    }
+
+    public int getCostoTotale() {
+        return costoTotale;
+    }
+
+    public void setCostoTotale(int costoTotale) {
+        this.costoTotale = costoTotale;
     }
 }

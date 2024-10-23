@@ -3,7 +3,7 @@ package com.example.sapply.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "alberi")
+@Table(name = "albero")
 public class Albero {
 
     @Id
