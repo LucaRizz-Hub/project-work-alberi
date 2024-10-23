@@ -17,12 +17,12 @@ public class AlberoAdottato {
 
     @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "fk_id_albero", referencedColumnName = "id")
-    private AlberoAdottato alberoAdottato;
+    private Albero albero;
 
 
-@OneToOne(cascade = CascadeType.REFRESH)
-@JoinColumn(name = "fk_id_adozione", referencedColumnName = "id")
-private Adozione adozione;
+    @OneToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "fk_id_adozione", referencedColumnName = "id")
+    private Adozione adozione;
 
     public int getId() {
         return id;
