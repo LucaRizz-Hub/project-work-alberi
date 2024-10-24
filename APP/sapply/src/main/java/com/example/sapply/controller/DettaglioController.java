@@ -20,7 +20,7 @@ public class DettaglioController {
     private AlberoService alberoService;
 
     @GetMapping
-    public String getPage(@RequestParam("id") int idAlbero,
+    public String getPage(@RequestParam( required = false, name="id" ) int idAlbero ,
                           Model model) {
         Albero albero = alberoService.dettaglioAlbero(idAlbero);
         model.addAttribute("albero", albero);
