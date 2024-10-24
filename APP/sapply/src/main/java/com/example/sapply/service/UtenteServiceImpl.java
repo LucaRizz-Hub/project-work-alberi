@@ -1,6 +1,7 @@
 package com.example.sapply.service;
 
 import com.example.sapply.dao.UtenteDao;
+import com.example.sapply.model.Utente;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ public class UtenteServiceImpl  implements UtenteService {
 
     @Override
     public boolean loginUtente(String username, String password, HttpSession session) {
-        Utente utente = utenteDao.findByProfiloUsernameAndProfiloPassword(username, password);
+        Utente utente = utenteDao.findByUsernameAndPassword(username, password);
         if(utente != null) {
             session.setAttribute("utente", utente);
             return true;
@@ -28,9 +29,9 @@ public class UtenteServiceImpl  implements UtenteService {
 
     @Override
     public boolean controlloUsername(String username) {
-        if(utenteDao.findByProfiloUsername(username) == null)
+        if(utenteDao.findByUsername(username) == null)
             return true;
         return false;
     }
 }
-}
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrazione</title>
+</head>
+<body>
+<h1>Registrazione Utente</h1>
+<form th:object="${utente}" method="post">
+  <label for="nome">Nome</label> <input type="text" th:field="*{nome}" name="nome" id="nome" required>
+  <br>
+
+  <label for="cognome">Cognome</label> <input type="text" th:field="*{cognome}" name="cognome" id="cognome" required>
+  <br>
+
+  <label for="email">Email</label> <input type="email" th:field="*{email}" name="email" id="email"> <br>
+
+
+  <label for="username">Username</label> <input type="text" th:field="*{username}" name="username" id="username" required>
+  <p th:if="${duplicato != null}" th:text="${duplicato}"></p>
+  <br>
+<!--  da dove arriva duplicato ??? -->
+
+  <label for="password">Password</label> <input type="password" th:field="*{password}"  name="password" id="password">
+  <br>
+
+  <label for="pagamento">Metodo di pagamento</label> <input type="pagamento" th:field="*{metodoPagamento}"  name="pagamento" id="pagamento" required>
+
+  <label for="foto">Foto</label> <input type="file" th:field="*{foto}" name="foto" id="foto">
+  <br>
+<!-- facciamo che la foto non è required e non dà errori... -->
+
+  <input type="submit" value="Registrati">
+</form>
+</body>
+</html>
