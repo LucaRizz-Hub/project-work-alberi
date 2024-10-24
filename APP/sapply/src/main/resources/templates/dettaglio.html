@@ -9,6 +9,24 @@
 <body>
 
 <h1>dettaglio</h1>
+<a th:href="@{/}">Torna al Catalogo</a>
+
+<div class="card">
+    <div class="card-body">
+        <h5 th:text="${albero.nomeAlbero} + ' ' + ${albero.specie}"></h5>
+        <ul>
+            <li th:text="${albero.specie}">specie: </li>
+
+            <li th:text="${albero.continente}">continente: </li>
+            <li th:text="${albero.paese}">paese: </li>
+            <li th:text="${#numbers.formatDecimal(albero.prezzo, 0, 'POINT', 2, 'COMMA')}">Prezzo</li>
+            <li th:text="${albero.co2}">emissioni di co2: </li>
+            <li th:text="${albero.significato}">significato: </li>
+
+        </ul>
+        <p th:text="${albero.descrizione}">Descrizione</p>
+    </div>
+</div>
 
 </body>
 </html>
