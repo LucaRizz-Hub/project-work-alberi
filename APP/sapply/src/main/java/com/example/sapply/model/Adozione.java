@@ -23,7 +23,7 @@ public class Adozione {
     @Column(name = "data_adozione")
     private LocalDate dataAdozione;
 
-    @Column(name = "quantità")
+    @Column
     private int quantita;
 
     @Column (name = "costo_totale")
