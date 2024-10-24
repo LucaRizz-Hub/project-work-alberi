@@ -16,7 +16,7 @@
   <p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
   <br>
 
-  <label for="email">Email</label> <input type="email" name="email" id="email"> <br>
+  <label for="email">Email</label> <input type="email" th:field="*{email}" name="email" id="email"> <br>
 
 
   <label for="username">Username</label> <input type="text" th:field="*{username}" name="username" id="username" required>
@@ -29,7 +29,7 @@
   <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
   <br>
 
-  <label for="pagamento">Metodo di pagamento</label> <input type="pagamento"  name="pagamento" id="pagamento" required>
+  <label for="pagamento">Metodo di pagamento</label> <input type="pagamento" th:field="*{metodoPagamento}"  name="pagamento" id="pagamento" required>
 
   <label for="foto">Foto</label> <input type="file" th:field="*{foto}" name="foto" id="foto">
   <br>
