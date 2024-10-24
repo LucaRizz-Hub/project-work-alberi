@@ -14,7 +14,7 @@
   <label for="cognome">Cognome</label> <input type="text" th:field="*{cognome}" name="cognome" id="cognome" required>
   <br>
 
-  <label for="email">Email</label> <input type="email" th:field="*{email}" name="email" id="email"> <br>
+  <label for="email">Email</label> <input type="email" th:field="*{email}" name="email" id="email" required> <br>
 
 
   <label for="username">Username</label> <input type="text" th:field="*{username}" name="username" id="username" required>
@@ -22,7 +22,7 @@
   <br>
 <!--  da dove arriva duplicato ??? -->
 
-  <label for="password">Password</label> <input type="password" th:field="*{password}"  name="password" id="password">
+  <label for="password">Password</label> <input type="password" th:field="*{password}"  name="password" id="password" required>
   <br>
 
   <label for="pagamento">Metodo di pagamento</label> <input type="pagamento" th:field="*{metodoPagamento}"  name="pagamento" id="pagamento" required>
