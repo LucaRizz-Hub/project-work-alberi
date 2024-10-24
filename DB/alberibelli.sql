@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ott 24, 2024 alle 16:31
+-- Creato il: Ott 24, 2024 alle 16:42
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.0.28
 
@@ -32,7 +32,7 @@ CREATE TABLE `adozione` (
   `id_albero` int(11) DEFAULT NULL,
   `id_utente` int(11) DEFAULT NULL,
   `data_adozione` date NOT NULL DEFAULT current_timestamp(),
-  `quantità` int(11) DEFAULT NULL,
+  `quantita` int(11) DEFAULT NULL,
   `costo_totale` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
