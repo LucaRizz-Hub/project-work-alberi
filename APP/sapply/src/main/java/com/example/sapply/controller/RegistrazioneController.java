@@ -38,6 +38,6 @@ public class RegistrazioneController {
             return "registrazione";
         }
         utenteService.registrazioneUtente(utente);
-        return "redirect:/loginutente";
+        return "redirect:/login";
     }
 }

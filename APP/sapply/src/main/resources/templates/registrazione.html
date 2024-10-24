@@ -29,12 +29,11 @@
   <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
   <br>
 
-  <label for="pagamento">Metodo di pagamento</label> <input type="pagamento"  name="pagamento" id="pagamento">
+  <label for="pagamento">Metodo di pagamento</label> <input type="pagamento"  name="pagamento" id="pagamento" required>
 
-  <label for="foto">Foto</label> <input type="file" th:field="*{foto}" name="foto" id="foto" required>
-  <p th:if="${#fields.hasErrors('foto')}" th:errors="*{foto}"></p>
+  <label for="foto">Foto</label> <input type="file" th:field="*{foto}" name="foto" id="foto">
   <br>
-<!--  come sarebbe che la foto può avere un error? cosa vuol dire che passiamo una foto? Stiamo passando la src...?-->
+<!-- facciamo che la foto non è required e non dà errori... -->
 
   <input type="submit" value="Registrati">
 </form>
