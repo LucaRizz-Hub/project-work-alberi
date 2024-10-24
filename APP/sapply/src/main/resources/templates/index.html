@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: grey;
+        }
+
+        .sfondo-banner{
+            height: 500px;
+            width: 100%;
+            background-image: url("https://images.pexels.com/photos/566496/pexels-photo-566496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        h1{font-size: 82px;}
+        header{
+            height: 80px;
+            width: 100%;
+            background-color: rgb(9, 80, 68);
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+
+        header ul li{
+            display: inline-block;
+            margin: auto 20px;
+
+        }
+
+        header ul{
+            list-style-type: none;
+        }
+
+        header a{text-decoration: none; color: white;}
+    </style>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a th:href="@{/login}">LOGIN</a></li>
+        <li><a href="">Link2</a></li>
+        <li><a href="">Link3</a></li>
+    </ul>
+</header>
+<div class="sfondo-banner d-flex justify-content-center align-items-center">
+    <h1 class="">Benvenuto su Take Freedom</h1>
+</div>
+</body>
+</html>
