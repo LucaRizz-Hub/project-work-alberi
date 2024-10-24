@@ -1,0 +1,28 @@
+/* Impostazione dello sfondo per l'intera pagina */
+body {
+    background-image: url('../imgs/boscoh.jpg'); /* Cambia con l'URL della tua immagine */
+    background-size: 120%;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-position 0.5s ease-out;
+}
+
+/* Stile per il div che contiene il form per centrarlo */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo bianco con trasparenza */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.open-sans-<uniquifier> {
+                font-family: "Open Sans", serif;
+                font-optical-sizing: auto;
+                font-weight: <weight>;
+                font-style: normal;
+                font-variation-settings:
+                        "wdth" 100;
+            }

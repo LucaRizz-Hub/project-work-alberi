@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrazione</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/css/uikit.min.css" />
+  <link rel="stylesheet" href="css/stile.css"/>
+</head>
+<body>
+
+<!-- Contenitore per centrare il form -->
+<div class="uk-flex uk-flex-center uk-flex-middle uk-height-viewport">
+  <div class="form-container uk-width-1-3@m uk-width-1-2@s uk-padding">
+
+    <h2 class="uk-heading-line uk-text-center"><span>SignUp</span></h2>
+    <form class="uk-form-stacked">
+
+      <!-- Nome e Cognome affiancati -->
+      <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+        <div>
+          <label class="uk-form-label" for="nome">Nome</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="nome" type="text" placeholder="Inserisci il tuo nome" required>
+          </div>
+        </div>
+        <div>
+          <label class="uk-form-label" for="cognome">Cognome</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="cognome" type="text" placeholder="Inserisci il tuo cognome" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Username e Email affiancati -->
+      <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+        <div>
+          <label class="uk-form-label" for="username">Username</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="username" type="text" placeholder="Inserisci il tuo nickname" required>
+          </div>
+        </div>
+        <div>
+          <label class="uk-form-label" for="email">Email</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="email" type="email" placeholder="Inserisci la tua mail" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password e Conferma Password affiancati -->
+      <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
+        <div>
+          <label class="uk-form-label" for="password">Password</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="password" type="password" placeholder="Inserisci una password" required>
+          </div>
+        </div>
+        <div>
+          <label class="uk-form-label" for="conf-password">Conferma Password</label>
+          <div class="uk-form-controls">
+            <input class="uk-input" id="conf-password" type="password" placeholder="Conferma la password" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="uk-margin">
+        <button class="uk-button uk-button-primary uk-width-1-1" type="submit">Registrati</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+<script>
+  // Aggiungi un listener per il movimento del mouse
+  document.addEventListener('mousemove', function(e) {
+    // Calcola la percentuale del movimento del mouse sulla pagina
+    let xPos = (e.clientX / window.innerWidth) * 50;  // Movimento orizzontale
+    let yPos = (e.clientY / window.innerHeight) * 50; // Movimento verticale
+
+    // Modifica la posizione dello sfondo in base alla posizione del mouse su entrambe le direzioni
+    document.body.style.backgroundPosition = `${50 - xPos}% ${50 - yPos}%`;
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
+
+</body>
+</html>
