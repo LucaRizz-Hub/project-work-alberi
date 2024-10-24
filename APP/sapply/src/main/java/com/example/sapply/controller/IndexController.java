@@ -19,8 +19,8 @@ public class IndexController {
 
     @GetMapping
     public String getPage(Model model){
-        List<Albero> albero = alberoService.elencoAlberi();
-        model.addAttribute("albero", albero);
+        List<Albero> alberi = alberoService.elencoAlberi();
+        model.addAttribute("alberi", alberi);
         return "index";
     }
 

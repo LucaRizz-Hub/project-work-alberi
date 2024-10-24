@@ -3,8 +3,11 @@ package com.example.sapply.service;
 import com.example.sapply.dao.AdozioneDao;
 import com.example.sapply.model.Adozione;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+
 
 public class AdozioneServiceImpl implements AdozioneService{
     @Autowired

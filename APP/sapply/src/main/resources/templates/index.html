@@ -57,7 +57,21 @@
     </ul>
 </header>
 <div class="sfondo-banner d-flex justify-content-center align-items-center">
-    <h1 class="">Benvenuto su Take Freedom</h1>
+    <h1 class="">Benvenuto su Sapply</h1>
+
+    <!-- <div class="card" th:each="albero : ${albero}"> -->
 </div>
+
+
+    <h2>CARD ALBERO CON LINK DETTAGLIO</h2>
+
+<div class="card" style="width: 16rem;">
+ <h4 th:each="albero:${alberi}" th:text="${albero.nomeAlbero}">nome </h4>
+    <img th:src="@{'images/albero_1.jpeg'}">
+
+
+
+</div>
+<a th:href="@{/dettaglio(id=${albero.id})}">Link dettaglio</a>
 </body>
 </html>
