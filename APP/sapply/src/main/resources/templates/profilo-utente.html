@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Profilo Utente</title>
+    <style>
+        td{
+            border: 1px solid black;
+            margin: 0px;
+            padding: 5px 10px;
+            font-size: 20px;
+        }
+        #quadroFoto{
+            width: 150px;
+            height: 200px;
+            border: 3px solid black;
+        }
+        #quadroFoto img{
+            width: fit-content;
+            height: auto;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Ciao ciao</h1>
+<a th:href="@{/areariservata}">Torna all'area riservata</a>
+    <h1 th:text="'Profilo di ' + ${utente.username}"></h1>
+    <div id="quadroFoto">
+        <img th:src="@{'../static/images/' + ${utente.foto}}" th:alt="${utente.foto}">
+    </div>
+
+<table>
+        <tr>
+            <td><strong>Nome: </strong> <span th:text="${utente.nome}"></span></td>
+            <td><strong>Cognome: </strong> <span th:text="${utente.cognome}"></span></td>
+        </tr>
+        <tr>
+
+            <td><strong>Username: </strong> <span th:text="${utente.username}"></span></td>
+            <td><strong>Password: </strong> <span th:text="${utente.password}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Email: </strong> <span th:text="${utente.email}"></span></td>
+            <td><strong>Metodo di pagamento: </strong> <span th:text="${utente.metodoPagamento}"></span></td>
+        </tr>
+
+        <tr>
+            <td><strong>Data di nascita: </strong> <span th:text="${utente.dataNascita}"></span></td>
+            <td><strong>Data di iscrizione: </strong> <span th:text="${utente.dataIscrizione}"></span></td>
+        </tr>
+    </table>
 </body>
 </html>
