@@ -9,5 +9,5 @@ public interface AdozioneService {
 
     List<Adozione> elencoAdozioni();
     Adozione datiAdozione(int id);
-    void invioOrdine(HttpSession session);
+//    void invioOrdine(HttpSession session);
 }
