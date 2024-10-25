@@ -25,7 +25,18 @@
   <label for="password">Password</label> <input type="password" th:field="*{password}"  name="password" id="password" required>
   <br>
 
-  <label for="pagamento">Metodo di pagamento</label> <input type="pagamento" th:field="*{metodoPagamento}"  name="pagamento" id="pagamento" required>
+  <label for="pagamento">Metodo di pagamento</label>
+  <select name="pagamento" id="pagamento" th:field="*{metodoPagamento}" required>
+    <option value="payal">Paypal</option>
+    <option value="google">Google Pay</option>
+    <option value="apple">Apple Pay</option>
+    <option value="addebito">Addebito Diretto</option>
+    <option value="carta">Carta di debito/credito</option>
+  </select>
+  <br>
+
+  <label for="dataNascita">Data di Nascita: </label> <input type="date" th:field="*{dataNascita}"  name="dataNascita" id="dataNascita" required>
+  <br>
 
   <label for="foto">Foto</label> <input type="file" th:field="*{foto}" name="foto" id="foto">
   <br>
