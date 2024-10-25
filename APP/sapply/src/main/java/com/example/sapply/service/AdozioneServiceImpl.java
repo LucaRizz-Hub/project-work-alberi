@@ -2,6 +2,7 @@ package com.example.sapply.service;
 
 import com.example.sapply.dao.AdozioneDao;
 import com.example.sapply.model.Adozione;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,10 @@ public class AdozioneServiceImpl implements AdozioneService{
     public Adozione datiAdozione(int id) {
         return adozioneDao.findById(id).get();
     }
+
+//    @Override
+//    public void invioOrdine(HttpSession session) {
+//
+//    }
 
 }

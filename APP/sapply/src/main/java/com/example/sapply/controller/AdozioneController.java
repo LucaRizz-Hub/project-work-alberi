@@ -15,13 +15,8 @@ public class AdozioneController {
 
 
     @GetMapping("/adozione")
-    public String mostraPaginaAdozione(Model model, Principal principal) {
-        if (principal == null) { // nessun utente loggato
-            return "redirect:/login";
-        }
-        // Utente loggato: visualizza il modulo per l’adozione
-         model.addAttribute("albero", AlberoService.());
-         return "adozione"; // Nome della pagina HTML
+    public String mostraPaginaAdozione(Model model) {
+        return null;
     }
 
 
