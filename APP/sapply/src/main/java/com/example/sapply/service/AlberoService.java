@@ -4,12 +4,13 @@ import com.example.sapply.model.Albero;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AlberoService {
 
 List<Albero> elencoAlberi();
-Albero dettaglioAlbero(int idAlbero);
-
+Albero adozioneAlbero(int idAlbero);
+    public Map<String, List<Albero>> getAlberiPerContinente();
 
 //gestione carrello
 

@@ -5,10 +5,7 @@ import com.example.sapply.dao.AlberoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AlberoServiceImpl implements AlberoService {
@@ -21,8 +18,21 @@ public class AlberoServiceImpl implements AlberoService {
         return (List<Albero>) alberoDao.findAll();
     }
 
-   /* public Map<String, List<Albero>> getAlberiPerContinente(){
+   public Map<String, List<Albero>> getAlberiPerContinente(){
+
+        List<Albero> alberi = elencoAlberi();
+
         Map<String, List<Albero>> alberiPerContinente = new HashMap<>();
+       Set<String> continenti = new HashSet<>();
+
+       for(Albero albero : alberi){
+           continenti.add(albero.getContinente());
+
+        }
+
+       for (String continente : continenti){
+           alberiPerContinente.put(continente, alberoDao.findByContinente(continente));
+       }
         // Aggiungi ogni lista di alberi per continente
         alberiPerContinente.put("Europa", alberoDao.findByContinente("Europa"));
         alberiPerContinente.put("Asia", alberoDao.findByContinente("Asia"));
@@ -31,10 +41,10 @@ public class AlberoServiceImpl implements AlberoService {
         alberiPerContinente.put("Africa", alberoDao.findByContinente("Africa"));
 
         return alberiPerContinente;
-    }*/
+    }
 
     @Override
-    public Albero dettaglioAlbero(int idAlbero) {
+    public Albero adozioneAlbero(int idAlbero) {
         Optional<Albero> alberoOptional = alberoDao.findById(idAlbero);
 
         if (alberoOptional.isPresent()) {

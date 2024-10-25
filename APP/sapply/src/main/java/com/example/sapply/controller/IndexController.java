@@ -21,14 +21,13 @@ public class IndexController {
     @GetMapping
     public String getPage(Model model){
         List<Albero> alberi = alberoService.elencoAlberi();
+        Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+        model.addAttribute("alberiPerContinente", alberiPerContinente);
         model.addAttribute("alberi", alberi);
+        System.out.println(alberiPerContinente);
         return "index";
     }
 
-    /*@GetMapping("/alberi-per-continente")
-    public String mostraAlberiPerContinente(Model model) {
-        Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
-        model.addAttribute("alberiPerContinente", alberiPerContinente);
-        return "alberiPerContinente";*/
+
 
 }
