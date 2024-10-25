@@ -4,8 +4,10 @@ import com.example.sapply.model.Albero;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface AlberoDao extends CrudRepository<Albero, Integer> {
 
-//Albero findByContinente(String continente);
+List<Albero> findByContinente(String continente);
 
 }

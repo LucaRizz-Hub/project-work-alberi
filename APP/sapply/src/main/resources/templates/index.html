@@ -63,14 +63,27 @@
 </div>
 
 
-    <h2>CARD ALBERO CON LINK DETTAGLIO</h2>
+    <h2>CARD ALBERO CON LINK adozione</h2>
 
 <div class="card" style="width: 16rem;" th:each="albero:${alberi}">
  <h4  th:text="${albero.nomeAlbero}">nome </h4>
     <img th:src="@{'images/albero_' + ${albero.id} + '.jpg'}">
 
-<a  class="btn btn-primary" th:href="@{/dettaglio(id=${albero.id})}">Link dettaglio</a>
+<a  class="btn btn-primary" th:href="@{/adozione(id=${albero.id})}">adotta questo albero</a>
+
 </div>
+<div>
+    <div th:each="continente:${alberiPerContinente}">
+        <div th:text="${continente.key}"></div>
+        <div>
+            <ul>
+                <li th:each="albero:${continente.value}" th:text="${albero.nomeAlbero}"></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
 
