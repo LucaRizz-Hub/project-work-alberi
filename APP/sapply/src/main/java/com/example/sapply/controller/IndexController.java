@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -23,5 +24,11 @@ public class IndexController {
         model.addAttribute("alberi", alberi);
         return "index";
     }
+
+    /*@GetMapping("/alberi-per-continente")
+    public String mostraAlberiPerContinente(Model model) {
+        Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+        model.addAttribute("alberiPerContinente", alberiPerContinente);
+        return "alberiPerContinente";*/
 
 }

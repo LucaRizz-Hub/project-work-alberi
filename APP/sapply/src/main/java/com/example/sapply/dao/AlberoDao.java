@@ -6,5 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AlberoDao extends CrudRepository<Albero, Integer> {
 
-    @Query
+//Albero findByContinente(String continente);
+
 }

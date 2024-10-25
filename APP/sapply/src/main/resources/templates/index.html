@@ -67,7 +67,7 @@
 
 <div class="card" style="width: 16rem;" th:each="albero:${alberi}">
  <h4  th:text="${albero.nomeAlbero}">nome </h4>
-    <img th:src="@{'images/albero_' + ${albero.id} + '.jpeg'}">
+    <img th:src="@{'images/albero_' + ${albero.id} + '.jpg'}">
 
 <a  class="btn btn-primary" th:href="@{/dettaglio(id=${albero.id})}">Link dettaglio</a>
 </div>
