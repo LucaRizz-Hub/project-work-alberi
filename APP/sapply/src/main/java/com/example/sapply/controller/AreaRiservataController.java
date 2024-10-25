@@ -22,4 +22,10 @@ public class AreaRiservataController {
         return "area-riservata";
     }
 
+    @GetMapping("/logout")
+    public String logoutUtente(HttpSession session){
+        session.removeAttribute("utente");
+        return "redirect:/";
+    }
+
 }
