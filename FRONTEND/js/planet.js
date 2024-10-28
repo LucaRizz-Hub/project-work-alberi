@@ -23,7 +23,7 @@ function mostraDettagliAlbero(alberoId) {
 }
 
 // Carica l'SVG e iniettalo come inline SVG
-fetch('../imgs/sapplylogo.svg')
+fetch('../images/sapplylogo.svg')
     .then(response => response.text())
     .then(svgContent => {
         document.getElementById('my-svg').innerHTML = svgContent;

@@ -164,7 +164,14 @@ body {
     box-shadow: none;
 }
 
-
+.sapp-flat{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+.sapp-flat:hover{
+    text-decoration: none;
+    color: #f2f2f2;
+}
 .sapp-card-border{
     border: 3px solid #f2f2f2 !important;
     box-shadow: none;

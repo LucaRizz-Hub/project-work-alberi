@@ -4,86 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        *{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body{
-            background-color: grey;
-        }
-
-        .sfondo-banner{
-            height: 500px;
-            width: 100%;
-            background-image: url("https://images.pexels.com/photos/566496/pexels-photo-566496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-        }
-        h1{font-size: 82px;}
-        header{
-            height: 80px;
-            width: 100%;
-            background-color: rgb(9, 80, 68);
-            display: flex;
-            justify-content: start;
-            align-items: center;
-        }
-
-        header ul li{
-            display: inline-block;
-            margin: auto 20px;
-
-        }
-
-        header ul{
-            list-style-type: none;
-        }
-
-        header a{text-decoration: none; color: white;}
-    </style>
+    <!-- Google Fonts - Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/stile.css"/>
 </head>
 <body>
-<header>
-    <ul>
-        <li><a th:href="@{/login}">LOGIN</a></li>
-        <li><a th:href="@{/registrazione}">REGISTRAZIONE</a></li>
-        <li><a href="">Link3</a></li>
-    </ul>
-</header>
-<div class="sfondo-banner d-flex justify-content-center align-items-center">
-    <h1 class="">Benvenuto su Sapply</h1>
+<nav class="uk-navbar-container uk-padding-small">
+    <div class="uk-container">
+        <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
+            <!-- Navbar per schermi medi o più grandi -->
+            <div class="uk-navbar-left uk-visible@m">
+                <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/alberi}">Tutti gli alberi</a>
+            </div>
+            <div class="uk-navbar-left uk-visible@m">
+                <ul class="uk-navbar-nav">
+                    <!-- Itera su ogni continente -->
+                    <div th:each="continente : ${alberiPerContinente}">
+                        <li>
+                            <!-- Pulsante per il continente -->
+                            <div class="uk-inline uk-margin-small-left">
+                                <button class="uk-button sapp-btn-light sapp-shadow"
+                                        th:classappend="'sapp-' + ${continente.key.toLowerCase()}"
+                                        type="button"
+                                        th:text="${continente.key}"> <!-- Nome del continente -->
+                                </button>
+                                <!-- Dropdown degli alberi del continente -->
+                                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <!-- Itera su ogni albero nel continente -->
+                                        <li th:each="albero : ${continente.value}">
+                                            <a th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </div>
 
-    <!-- <div class="card" th:each="albero : ${albero}"> -->
-</div>
+            <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
+            <div class="uk-navbar-left uk-hidden@m">
+                <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
+                    <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+                </a>
+            </div>
 
+            <!-- Login e Registrazione a destra -->
+            <div class="uk-navbar-right">
+                <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/login}">Login</a>
+                <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
+            </div>
 
-    <h2>CARD ALBERO CON LINK adozione</h2>
-
-<div class="card" style="width: 16rem;" th:each="albero:${alberi}">
- <h4  th:text="${albero.nomeAlbero}">nome </h4>
-    <img th:src="@{'images/albero_' + ${albero.id} + '.jpg'}">
-
-<a  class="btn btn-primary" th:href="@{/adozione(id=${albero.id})}">adotta questo albero</a>
-
-</div>
-<div>
-    <div th:each="continente:${alberiPerContinente}">
-        <div th:text="${continente.key}"></div>
-        <div>
-            <ul>
-                <li th:each="albero:${continente.value}" th:text="${albero.nomeAlbero}"></li>
-            </ul>
         </div>
+    </div>
+</nav>
 
+<!-- Offcanvas Menu per dispositivi più piccoli di tablet -->
+<div id="offcanvas-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+        <ul class="uk-nav uk-nav-default sapp-font">
+            <li><button class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</button></li>
+            <li><button class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</button></li>
+            <li class="uk-nav-divider"></li>
+
+            <li><a th:href="@{/alberi}">Tutti Gli Alberi</a></li>
+
+            <div th:each="continente:${alberiPerContinente}" >
+                <li class="uk-nav-header" th:text="${continente.key}"></li>
+                <div>
+                    <ul class="uk-nav-sub">
+                        <li th:each="albero:${continente.value}"  >
+                            <a  th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"> </a> </li>
+                    </ul>
+                </div>
+        </ul>
     </div>
 </div>
 
+<header>
+
+</header>
+<div class="uk-section uk-flex uk-flex-middle uk-flex-center">
+    <div class="uk-container uk-grid-collapse" uk-grid>
+        <!-- Sezione a sinistra con h1 -->
+        <div>
+            <h1 class="uk-text-center sapp-font" style="color: black; font-size: 2rem;">
+                Un Albero per Te,<br> Un Respiro per il Pianeta:<br> Inizia Oggi a Fare la Differenza
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="uk-container uk-container-xlarge">
+    <div class="uk-section" uk-height-viewport="expand: true">
+        <div class="uk-grid-divider uk-child-width-expand@m sapp-angle"  uk-grid>
+            <!-- Colonna sinistra: Mappamondo con alberi -->
+            <div>
+                <div id="mappamondo-container" class="uk-width-3-5">
+                    <img src="../images/planet.svg" alt="Mappamondo" class="uk-responsive-width">
+                    <div class="albero" style="top: 72%; left: 56%;" data-albero-id="1"></div>
+                    <div class="albero" style="top: 77%; left: 51%;" data-albero-id="2"></div>
+                    <div class="albero" style="top: 71%; left: 51%;" data-albero-id="3"></div>
+                    <div class="albero" style="top: 60%; left: 48%;" data-albero-id="4"></div>
+                    <div class="albero" style="top: 77%; left: 49%;" data-albero-id="5"></div>
+                    <div class="albero" style="top: 51%; left: 63%;" data-albero-id="6"></div>
+                    <div class="albero" style="top: 45%; left: 70%;" data-albero-id="7"></div>
+                    <div class="albero" style="top: 51%; left: 65%;" data-albero-id="8"></div>
+                    <div class="albero" style="top: 45%; left: 73%;" data-albero-id="9"></div>
+                    <div class="albero" style="top: 44%; left: 53%;" data-albero-id="10"></div>
+                    <div class="albero" style="top: 40%; left: 43%;" data-albero-id="11"></div>
+                    <div class="albero" style="top: 32%; left: 47%;" data-albero-id="12"></div>
+                    <div class="albero" style="top: 23%; left: 51%;" data-albero-id="13"></div>
+                    <div class="albero" style="top: 38%; left: 47%;" data-albero-id="14"></div>
+                    <div class="albero" style="top: 38%; left: 50%;" data-albero-id="15"></div>
+                    <div class="albero" style="top: 41%; left: 22%;" data-albero-id="16"></div>
+                    <div class="albero" style="top: 41%; left: 18%;" data-albero-id="17"></div>
+                    <div class="albero" style="top: 36%; left: 15%;" data-albero-id="18"></div>
+                    <div class="albero" style="top: 90%; left: 26%;" data-albero-id="19"></div>
+                    <div class="albero" style="top: 64%; left: 24%;" data-albero-id="20"></div>
+                    <div class="albero" style="top: 74%; left: 76%;" data-albero-id="21"></div>
+                    <div class="albero" style="top: 83%; left: 90%;" data-albero-id="22"></div>
+                    <div class="albero" style="top: 87%; left: 89%;" data-albero-id="23"></div>
+                    <div class="albero" style="top: 76%; left: 79%;" data-albero-id="24"></div>
+                    <div class="albero" style="top: 78%; left: 82%;" data-albero-id="25"></div>
+                    <!-- Aggiungi altri pallini per rappresentare gli alberi -->
+                </div>
+            </div>
+
+            <!-- Colonna destra: Dettagli dell'albero -->
+            <div class="uk-width-2-5@m uk-width-1-1@s">
+                <div id="dettaglio-albero" class="uk-card uk-card-default uk-card-body sapp-shadow sapp-angle">
+                    <h3 id="albero-titolo" class="uk-card-title">Dettagli dell'albero</h3>
+                    <p id="albero-descrizione">Passa il mouse su un albero per vedere i dettagli.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/planet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>
 

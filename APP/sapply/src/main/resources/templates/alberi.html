@@ -13,12 +13,13 @@
 
 </head>
 <body>
-
 <nav class="uk-navbar-container uk-padding-small">
     <div class="uk-container">
         <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
-
             <!-- Navbar per schermi medi o più grandi -->
+            <div class="uk-navbar-left uk-visible@m">
+                <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/alberi}">Tutti gli alberi</a>
+            </div>
             <div class="uk-navbar-left uk-visible@m">
                 <ul class="uk-navbar-nav">
                     <!-- Itera su ogni continente -->
@@ -70,11 +71,11 @@
 
 
         <ul class="uk-nav uk-nav-default sapp-font">
-            <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</a></li>
-            <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</a></li>
+            <li><button class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</button></li>
+            <li><button class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</button></li>
             <li class="uk-nav-divider"></li>
 
-            <li><a href="#">Tutti Gli Alberi</a></li>
+            <li><a th:href="@{/alberi}">Tutti Gli Alberi</a></li>
 
             <div th:each="continente:${alberiPerContinente}" >
                 <li class="uk-nav-header" th:text="${continente.key}"></li>
@@ -91,42 +92,34 @@
 <div class="uk-section">
     <!-- Contenitore principale per ogni continente -->
     <div th:each="continente : ${alberiPerContinente}" class="uk-container">
-        <div class="uk-grid-divider uk-child-width-1-2@m" uk-grid>
+        <!-- Titolo del continente su un'intera riga -->
+        <h2 class="uk-heading-line uk-text-center uk-margin-large-bottom uk-margin-large-top sapp-font"><span th:text="${continente.key}"></span></h2>
 
-            <!-- Colonna sinistra per il titolo e l'immagine SVG del continente -->
-            <div>
-                <h2 class="uk-heading-line uk-text-left"><span th:text="${continente.key}"></span></h2>
-                <div class="uk-margin-medium-top">
-                    <!-- Posiziona qui l'SVG del continente -->
-                    <img src="https://via.placeholder.com/200x200" alt="Mappa" th:alt="'Mappa ' + ${continente.key}">
-                </div>
-            </div>
-
-            <!-- Colonna destra per le card degli alberi del continente -->
-            <div class="uk-grid-small" uk-grid>
-                <!-- Itera su ogni albero del continente -->
-                <div th:each="albero : ${continente.value}">
-                    <div class="uk-card uk-card-default uk-card sapp-card-border sapp-angle sapp-font" style="overflow: hidden;">
-                        <div class="sapp-angle-img uk-cover-container">
-                            <img class="uk-cover uk-animation-kenburns" th:src="@{${albero.foto}}" alt="Immagine Albero" th:alt="${albero.nomeAlbero}">
-                        </div>
-                        <div class="uk-card-body sapp-font">
-                            <h3 class="sapp-font" th:text="${albero.nomeAlbero} + ' - ' + ${albero.specie}"></h3>
-                            <h4 class="sapp-font-light-reg" th:text="'Paese: ' + ${albero.paese}"></h4>
-                            <h4 class="uk-margin-medium-bottom sapp-font-light-reg" th:text="'Significato: ' + ${albero.significato}"></h4>
-                            <h4 class="sapp-font-light-reg" th:text="'Prezzo: ' + ${albero.prezzo}"></h4>
-                            <button class="uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
-                                    th:href="@{/adozione(id=${albero.id})}">
-                                Adottami
-                            </button>
-                        </div>
+        <!-- Griglia delle card degli alberi, disposte su 2 o 3 colonne -->
+        <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+            <!-- Itera su ogni albero del continente per generare le card -->
+            <div th:each="albero : ${continente.value}">
+                <div class="uk-card uk-card-default uk-card sapp-card-border sapp-angle sapp-font" style="overflow: hidden;">
+                    <div class="sapp-angle-img uk-cover-container">
+                        <img class="uk-cover uk-animation-kenburns" th:src="@{${albero.foto}}" alt="Immagine Albero" th:alt="${albero.nomeAlbero}">
+                    </div>
+                    <div class="uk-card-body sapp-font">
+                        <h3 class="sapp-font" th:text="${albero.nomeAlbero} + ' - ' + ${albero.specie}"></h3>
+                        <h4 class="sapp-font-light-reg" th:text="'Paese: ' + ${albero.paese}"></h4>
+                        <h4 class="uk-margin-medium-bottom sapp-font-light-reg" th:text="'Significato: ' + ${albero.significato}"></h4>
+                        <!-- Prezzo formattato con due decimali e aggiunta di /anno -->
+                        <h4 class="sapp-font-light-reg" th:text="'Prezzo: €' + ${#numbers.formatDecimal(albero.prezzo, 0, 'POINT', 2, 'COMMA')} + '/anno'"></h4>
+                        <button class="uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
+                                th:href="@{/adozione(id=${albero.id})}">
+                            Adottami
+                        </button>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
 
 <script src="js/planet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>

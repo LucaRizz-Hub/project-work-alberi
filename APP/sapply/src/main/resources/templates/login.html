@@ -17,8 +17,10 @@
 <nav class="uk-navbar-container uk-padding-small">
   <div class="uk-container">
     <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
-
       <!-- Navbar per schermi medi o più grandi -->
+      <div class="uk-navbar-left uk-visible@m">
+        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/alberi}">Tutti gli alberi</a>
+      </div>
       <div class="uk-navbar-left uk-visible@m">
         <ul class="uk-navbar-nav">
           <!-- Itera su ogni continente -->
@@ -70,11 +72,11 @@
 
 
     <ul class="uk-nav uk-nav-default sapp-font">
-      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</a></li>
-      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</a></li>
+      <li><button class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</button></li>
+      <li><button class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</button></li>
       <li class="uk-nav-divider"></li>
 
-      <li><a href="#">Tutti Gli Alberi</a></li>
+      <li><a th:href="@{/alberi}">Tutti Gli Alberi</a></li>
 
       <div th:each="continente:${alberiPerContinente}" >
         <li class="uk-nav-header" th:text="${continente.key}"></li>
@@ -84,9 +86,7 @@
               <a  th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"> </a> </li>
           </ul>
         </div>
-
-
-     </ul>
+    </ul>
   </div>
 </div>
 

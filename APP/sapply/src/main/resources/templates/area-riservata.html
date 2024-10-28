@@ -4,8 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Area Utente</title>
+  <!-- Google Fonts - Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
+  <link rel="stylesheet" href="css/stile.css"/>
 </head>
 <body>
+<nav class="uk-navbar-container uk-padding-small">
+  <div class="uk-container">
+    <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
+      <!-- Navbar per schermi medi o più grandi -->
+      <div class="uk-navbar-left uk-visible@m">
+        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/alberi}">Tutti gli alberi</a>
+      </div>
+      <div class="uk-navbar-left uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <!-- Itera su ogni continente -->
+          <div th:each="continente : ${alberiPerContinente}">
+            <li>
+              <!-- Pulsante per il continente -->
+              <div class="uk-inline uk-margin-small-left">
+                <button class="uk-button sapp-btn-light sapp-shadow"
+                        th:classappend="'sapp-' + ${continente.key.toLowerCase()}"
+                        type="button"
+                        th:text="${continente.key}"> <!-- Nome del continente -->
+                </button>
+                <!-- Dropdown degli alberi del continente -->
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <!-- Itera su ogni albero nel continente -->
+                    <li th:each="albero : ${continente.value}">
+                      <a th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+
+      <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
+      <div class="uk-navbar-left uk-hidden@m">
+        <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
+          <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+        </a>
+      </div>
+
+      <!-- Login e Registrazione a destra -->
+      <div class="uk-navbar-right">
+        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/login}">Login</a>
+        <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Menu per dispositivi più piccoli di tablet -->
+<div id="offcanvas-menu" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+    <ul class="uk-nav uk-nav-default sapp-font">
+      <li><button class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</button></li>
+      <li><button class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</button></li>
+      <li class="uk-nav-divider"></li>
+
+      <li><a th:href="@{/alberi}">Tutti Gli Alberi</a></li>
+
+      <div th:each="continente:${alberiPerContinente}" >
+        <li class="uk-nav-header" th:text="${continente.key}"></li>
+        <div>
+          <ul class="uk-nav-sub">
+            <li th:each="albero:${continente.value}"  >
+              <a  th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"> </a> </li>
+          </ul>
+        </div>
+    </ul>
+  </div>
+</div>
+
 <h1>Benvenuto nell'Area Utente</h1>
 <h2>Cosa vuole fare oggi?</h2>
 <ul>
@@ -35,6 +116,7 @@
   <p>Non hai ancora adottato alberi. Esplora i nostri alberi disponibili e inizia subito la tua prima adozione!</p>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>
