@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+import java.util.Map;
+
 
 //localhost:8080/adozione?id
 @Controller
@@ -39,7 +42,8 @@ public class AdozioneController {
         Albero albero = alberoService.adozioneAlbero(idAlbero);
         // aggiungi l'albero al model così la pagina HTML può leggerla
         model.addAttribute("albero", albero);
-
+        Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+        model.addAttribute("alberiPerContinente", alberiPerContinente);
         Utente utente = (Utente) session.getAttribute("utente");
 
         model.addAttribute("utente", utente);
