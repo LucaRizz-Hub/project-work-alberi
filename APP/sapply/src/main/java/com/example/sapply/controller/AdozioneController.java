@@ -65,7 +65,7 @@ public class AdozioneController {
         String metodoPagamento = utente.getMetodoPagamento();
         adozioneService.creaAdozione(utente, albero, quantita);
 
-        return "area-riservata";
+        return "redirect:/areariservata";
     }
 
 

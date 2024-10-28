@@ -88,6 +88,46 @@
     </div>
 </div>
 
+<div class="uk-section">
+    <!-- Contenitore principale per ogni continente -->
+    <div th:each="continente : ${alberiPerContinente}" class="uk-container">
+        <div class="uk-grid-divider uk-child-width-1-2@m" uk-grid>
+
+            <!-- Colonna sinistra per il titolo e l'immagine SVG del continente -->
+            <div>
+                <h2 class="uk-heading-line uk-text-left"><span th:text="${continente.key}"></span></h2>
+                <div class="uk-margin-medium-top">
+                    <!-- Posiziona qui l'SVG del continente -->
+                    <img src="https://via.placeholder.com/200x200" alt="Mappa" th:alt="'Mappa ' + ${continente.key}">
+                </div>
+            </div>
+
+            <!-- Colonna destra per le card degli alberi del continente -->
+            <div class="uk-grid-small" uk-grid>
+                <!-- Itera su ogni albero del continente -->
+                <div th:each="albero : ${continente.value}">
+                    <div class="uk-card uk-card-default uk-card sapp-card-border sapp-angle sapp-font" style="overflow: hidden;">
+                        <div class="sapp-angle-img uk-cover-container">
+                            <img class="uk-cover uk-animation-kenburns" th:src="@{${albero.foto}}" alt="Immagine Albero" th:alt="${albero.nomeAlbero}">
+                        </div>
+                        <div class="uk-card-body sapp-font">
+                            <h3 class="sapp-font" th:text="${albero.nomeAlbero} + ' - ' + ${albero.specie}"></h3>
+                            <h4 class="sapp-font-light-reg" th:text="'Paese: ' + ${albero.paese}"></h4>
+                            <h4 class="uk-margin-medium-bottom sapp-font-light-reg" th:text="'Significato: ' + ${albero.significato}"></h4>
+                            <h4 class="sapp-font-light-reg" th:text="'Prezzo: ' + ${albero.prezzo}"></h4>
+                            <button class="uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
+                                    th:href="@{/adozione(id=${albero.id})}">
+                                Adottami
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script src="js/planet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
