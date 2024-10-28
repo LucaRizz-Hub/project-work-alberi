@@ -1,6 +1,8 @@
 package com.example.sapply.controller;
 
+import com.example.sapply.model.Albero;
 import com.example.sapply.model.Utente;
+import com.example.sapply.service.AlberoService;
 import com.example.sapply.service.UtenteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +14,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/registrazione")
 public class RegistrazioneController {
     @Autowired
     private UtenteService utenteService;
+    @Autowired
+    private AlberoService alberoService;
 
     @GetMapping
     public String getPage(Model model){
+        Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+        model.addAttribute("alberiPerContinente", alberiPerContinente);
         Utente utente = new Utente();
         model.addAttribute("utente", utente);
         return "registrazione";
