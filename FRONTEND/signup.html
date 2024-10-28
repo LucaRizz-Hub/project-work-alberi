@@ -6,108 +6,175 @@
   <title>Registrati</title>
   <!-- Google Fonts - Open Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
   <link rel="stylesheet" href="css/stile.css"/>
 </head>
 <body>
 
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; end: + *; offset: 80">
-
-  <nav class="uk-navbar-container">
+  <nav class="uk-navbar-container uk-padding-small">
     <div class="uk-container">
       <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
 
-        <div class="uk-navbar-left">
-          <a href="#" class="uk-navbar-item uk-logo">
-            <img src="imgs/sapplylogo.png" alt="logo" class="uk-responsive-width uk-width-small"/>
-          </a>
-        </div>
-
-
-        <!-- Dropdown Menu al centro -->
-        <div class="uk-navbar-left uk-margin-large-left">
+        <!-- Pulsanti Navbar per schermi medi o più grandi -->
+        <div class="uk-navbar-left uk-visible@m">
           <ul class="uk-navbar-nav">
+            <!-- Continenti e pulsanti -->
             <li>
-              <a href="#" class="sapp-font">Alberi</a>
-              <div class="uk-navbar-dropdown uk-navbar-dropdown-width-1-1">
-                <div class="uk-navbar-dropdown-grid uk-child-width-expand@s uk-grid-divider uk-grid-small" uk-grid>
-                  <!-- Colonna 1 -->
-                  <div class="uk-margin-small-left uk-margin-small-right" >
-                    <h4 class="uk-text-bold">Header 1</h4>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Link 1</a></li>
-                      <li><a href="#">Link 2</a></li>
-                      <li><a href="#">Link 3</a></li>
-                      <li><a href="#">Link 4</a></li>
-                      <li><a href="#">Link 5</a></li>
-                    </ul>
-                  </div>
-                  <!-- Colonna 2 -->
-                  <div class="uk-margin-small-left uk-margin-small-right">
-                    <h4 class="uk-text-bold">Header 2</h4>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Link 1</a></li>
-                      <li><a href="#">Link 2</a></li>
-                      <li><a href="#">Link 3</a></li>
-                      <li><a href="#">Link 4</a></li>
-                      <li><a href="#">Link 5</a></li>
-                    </ul>
-                  </div>
-                  <!-- Colonna 3 -->
-                  <div class="uk-margin-small-left uk-margin-small-right">
-                    <h4 class="uk-text-bold">Header 3</h4>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Link 1</a></li>
-                      <li><a href="#">Link 2</a></li>
-                      <li><a href="#">Link 3</a></li>
-                      <li><a href="#">Link 4</a></li>
-                      <li><a href="#">Link 5</a></li>
-                    </ul>
-                  </div>
-                  <!-- Colonna 4 -->
-                  <div class="uk-margin-small-left uk-margin-small-right">
-                    <h4 class="uk-text-bold">Header 4</h4>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Link 1</a></li>
-                      <li><a href="#">Link 2</a></li>
-                      <li><a href="#">Link 3</a></li>
-                      <li><a href="#">Link 4</a></li>
-                      <li><a href="#">Link 5</a></li>
-                    </ul>
-                  </div>
-                  <!-- Colonna 5 -->
-                  <div class="uk-margin-small-left uk-margin-small-right">
-                    <h4 class="uk-text-bold">Header 5</h4>
-                    <ul class="uk-nav uk-navbar-dropdown-nav">
-                      <li><a href="#">Link 1</a></li>
-                      <li><a href="#">Link 2</a></li>
-                      <li><a href="#">Link 3</a></li>
-                      <li><a href="#">Link 4</a></li>
-                      <li><a href="#">Link 5</a></li>
-                    </ul>
-                  </div>
+              <div class="uk-inline uk-margin-small-left">
+                <button class="uk-button sapp-btn-light sapp-shadow sapp-green" type="button">Tutti Gli Alberi</button>
+              </div>
+            </li>
+            <!-- Altri elementi navbar per i continenti -->
+            <li>
+              <div class="uk-inline uk-margin-small-left">
+                <button class="uk-button sapp-btn-light sapp-shadow sapp-americas" type="button">Americhe</button>
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#">Link America 1</a></li>
+                    <li><a href="#">Link America 2</a></li>
+                    <li><a href="#">Link America 3</a></li>
+                  </ul>
                 </div>
               </div>
             </li>
+
+            <!-- Asia -->
+            <li>
+              <div class="uk-inline">
+                <button class="uk-button sapp-btn-light sapp-shadow sapp-asia" type="button">Asia</button>
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#">Link Asia 1</a></li>
+                    <li><a href="#">Link Asia 2</a></li>
+                    <li><a href="#">Link Asia 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <!-- Africa -->
+            <li>
+              <div class="uk-inline">
+                <button class="uk-button sapp-btn-light sapp-shadow sapp-africa" type="button">Africa</button>
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#">Link Africa 1</a></li>
+                    <li><a href="#">Link Africa 2</a></li>
+                    <li><a href="#">Link Africa 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <!-- Europa -->
+            <li>
+              <div class="uk-inline">
+                <button class="uk-button sapp-btn-light sapp-shadow sapp-europe" type="button">Europa</button>
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#">Link Europa 1</a></li>
+                    <li><a href="#">Link Europa 2</a></li>
+                    <li><a href="#">Link Europa 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <!-- Oceania -->
+            <li>
+              <div class="uk-inline">
+                <button class="uk-button sapp-btn-light sapp-shadow sapp-oceania" type="button">Oceania</button>
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <li><a href="#">Link Oceania 1</a></li>
+                    <li><a href="#">Link Oceania 2</a></li>
+                    <li><a href="#">Link Oceania 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
           </ul>
+        </div>
+
+        <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
+        <div class="uk-navbar-left uk-hidden@m">
+          <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
+            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+          </a>
         </div>
 
         <!-- Login e Registrazione a destra -->
         <div class="uk-navbar-right">
-          <a class="uk-button uk-button-default uk-margin-small-right sapp-btn sapp-green" href="#">Login</a>
-          <a class="uk-button uk-button-primary sapp-btn sapp-blue" href="#">Registrati</a>
+          <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" href="#">Login</a>
+          <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" href="#">Registrati</a>
         </div>
 
       </div>
     </div>
   </nav>
-</div>
+
+  <!-- Offcanvas Menu per dispositivi più piccoli di tablet -->
+  <div id="offcanvas-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
 
 
+      <ul class="uk-nav uk-nav-default sapp-font">
+        <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" href="#">Login</a></li>
+        <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" href="#">Registrati</a></li>
+        <li class="uk-nav-divider"></li>
+
+        <li><a href="#">Tutti Gli Alberi</a></li>
+        <li class="uk-nav-header">Americhe</li>
+        <ul class="uk-nav-sub">
+          <li><a href="#">Link America 1</a></li>
+          <li><a href="#">Link America 2</a></li>
+          <li><a href="#">Link America 3</a></li>
+        </ul>
+        <li class="uk-nav-header">Asia</li>
+        <ul class="uk-nav-sub">
+          <li><a href="#">Link Asia 1</a></li>
+          <li><a href="#">Link Asia 2</a></li>
+          <li><a href="#">Link Asia 3</a></li>
+        </ul>
+        <!-- Continua con gli altri continenti come Africa, Europa, Oceania -->
+
+        <!-- Login e Registrazione in Offcanvas -->
+
+
+      </ul>
+    </div>
+  </div>
+
+  <section class="uk-section uk-padding-medium">
+    <div class="uk-container uk-flex uk-flex-middle uk-flex-center uk-flex-row">
+
+      <!-- Logo e Titolo in linea -->
+      <div class="uk-child-width-1-2@m uk-text-center" uk-grid>
+        <div class="uk-animation-toggle" tabindex="0">
+          <img class="uk-animation-stroke" src="https://getuikit.com/docs/images/strokes.svg" width="400" height="400" alt="" uk-svg="stroke-animation: true">
+        </div>
+        <div class="uk-animation-toggle" tabindex="0">
+          <img class="uk-animation-stroke uk-animation-reverse" src="https://getuikit.com/docs/images/strokes.svg" width="400" height="400" alt="" uk-svg="stroke-animation: true">
+        </div>
+      <h2 class="uk-heading-medium sapp-font-alt">Sapply</h2>
+
+      <!-- Divider verticale -->
+      <div class="uk-margin-left uk-margin-right">
+        <hr class="uk-divider-vertical">
+      </div>
+
+      <!-- Headline -->
+      <p class="sapp-font-alt uk-text-large">
+       Adotta un albero,<br>&ensp; una piccola azione per grandi risultati.
+      </p>
+    </div>
+  </section>
 <!-- Contenitore per centrare il form -->
-<div class="uk-flex uk-flex-center uk-flex-middle uk-margin-xlarge-top">
-  <div class="form-container uk-width-1-3@m uk-width-1-2@s uk-padding sapp-angle">
+<div class="uk-flex uk-flex-center uk-flex-middle uk-margin-medium-top">
+  <div class="form-container uk-width-1-3@m uk-width-1-2@s uk-padding sapp-angle sapp-shadow">
 
     <h2 class="uk-heading-line uk-text-left sapp-font"><span>Registrazione</span></h2>
     <form class="uk-form-stacked">
@@ -178,7 +245,7 @@
         <button class="uk-button uk-button-primary uk-width-1-1 sapp-font sapp-angle sapp-blue sapp-btn" type="submit">Registrati</button>
       </div>
       <div class="uk-margin">
-        <h5 class="uk-text-right sapp-font-light">Hai già effettuato la registrazione? <a href="signin.html">Accedi</a></h5>
+        <h5 class="uk-text-right sapp-font-light-reg">Hai già effettuato la registrazione? <a href="signin.html">Accedi</a></h5>
       </div>
 
     </form>

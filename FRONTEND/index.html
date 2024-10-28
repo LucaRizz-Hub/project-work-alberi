@@ -16,7 +16,7 @@
 
     <nav class="uk-navbar-container">
         <div class="uk-container">
-            <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
+            <div class="sapp-border" uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
 
                 <div class="uk-navbar-left">
                     <a href="#" class="uk-navbar-item uk-logo">
@@ -30,7 +30,7 @@
                     <ul class="uk-navbar-nav">
                         <li>
                             <a href="#" class="sapp-font">Alberi</a>
-                            <div class="uk-navbar-dropdown uk-navbar-dropdown-width-1-1">
+                            <div class="sapp-border uk-navbar-dropdown uk-navbar-dropdown-width-1-1">
                                 <div class="uk-navbar-dropdown-grid uk-child-width-expand@s uk-grid-divider uk-grid-small" uk-grid>
                                     <!-- Colonna 1 -->
                                     <div class="uk-margin-small-left uk-margin-small-right">
@@ -117,7 +117,7 @@
 
     <div class="uk-container uk-container-xlarge">
         <div class="uk-section" uk-height-viewport="expand: true">
-        <div class="uk-grid-divider uk-child-width-expand@m" uk-grid>
+        <div class="uk-grid-divider uk-child-width-expand@m sapp-angle"  uk-grid>
             <!-- Colonna sinistra: Mappamondo con alberi -->
             <div>
                 <div id="mappamondo-container" class="uk-width-3-5">
@@ -153,7 +153,7 @@
 
             <!-- Colonna destra: Dettagli dell'albero -->
             <div class="uk-width-2-5@m uk-width-1-1@s">
-                <div id="dettaglio-albero" class="uk-card uk-card-default uk-card-body">
+                <div id="dettaglio-albero" class="uk-card uk-card-default uk-card-body sapp-border sapp-angle">
                     <h3 id="albero-titolo" class="uk-card-title">Dettagli dell'albero</h3>
                     <p id="albero-descrizione">Passa il mouse su un albero per vedere i dettagli.</p>
                 </div>

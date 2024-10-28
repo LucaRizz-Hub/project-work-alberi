@@ -21,3 +21,11 @@ function mostraDettagliAlbero(alberoId) {
         descrizione.textContent = "Questo albero si trova in Africa ed è noto per la sua grande longevità.";
     }
 }
+
+// Carica l'SVG e iniettalo come inline SVG
+fetch('../imgs/sapplylogo.svg')
+    .then(response => response.text())
+    .then(svgContent => {
+        document.getElementById('my-svg').innerHTML = svgContent;
+        document.querySelector('#my-svg svg').classList.add('uk-animation-stroke');
+    });
