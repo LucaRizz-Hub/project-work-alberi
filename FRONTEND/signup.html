@@ -12,141 +12,80 @@
 </head>
 <body>
 
-  <nav class="uk-navbar-container uk-padding-small">
-    <div class="uk-container">
-      <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
 
-        <!-- Pulsanti Navbar per schermi medi o più grandi -->
-        <div class="uk-navbar-left uk-visible@m">
-          <ul class="uk-navbar-nav">
-            <!-- Continenti e pulsanti -->
+<nav class="uk-navbar-container uk-padding-small">
+  <div class="uk-container">
+    <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
+
+      <!-- Navbar per schermi medi o più grandi -->
+      <div class="uk-navbar-left uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <!-- Itera su ogni continente -->
+          <div th:each="continente : ${alberiPerContinente}">
             <li>
+              <!-- Pulsante per il continente -->
               <div class="uk-inline uk-margin-small-left">
-                <button class="uk-button sapp-btn-light sapp-shadow sapp-green" type="button">Tutti Gli Alberi</button>
-              </div>
-            </li>
-            <!-- Altri elementi navbar per i continenti -->
-            <li>
-              <div class="uk-inline uk-margin-small-left">
-                <button class="uk-button sapp-btn-light sapp-shadow sapp-americas" type="button">Americhe</button>
+                <button class="uk-button sapp-btn-light sapp-shadow"
+                        th:classappend="'sapp-' + ${continente.key.toLowerCase()}"
+                        type="button"
+                        th:text="${continente.key}"> <!-- Nome del continente -->
+                </button>
+                <!-- Dropdown degli alberi del continente -->
                 <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                   <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Link America 1</a></li>
-                    <li><a href="#">Link America 2</a></li>
-                    <li><a href="#">Link America 3</a></li>
+                    <!-- Itera su ogni albero nel continente -->
+                    <li th:each="albero : ${continente.value}">
+                      <a th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"></a>
+                    </li>
                   </ul>
                 </div>
               </div>
             </li>
-
-            <!-- Asia -->
-            <li>
-              <div class="uk-inline">
-                <button class="uk-button sapp-btn-light sapp-shadow sapp-asia" type="button">Asia</button>
-                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                  <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Link Asia 1</a></li>
-                    <li><a href="#">Link Asia 2</a></li>
-                    <li><a href="#">Link Asia 3</a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-
-            <!-- Africa -->
-            <li>
-              <div class="uk-inline">
-                <button class="uk-button sapp-btn-light sapp-shadow sapp-africa" type="button">Africa</button>
-                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                  <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Link Africa 1</a></li>
-                    <li><a href="#">Link Africa 2</a></li>
-                    <li><a href="#">Link Africa 3</a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-
-            <!-- Europa -->
-            <li>
-              <div class="uk-inline">
-                <button class="uk-button sapp-btn-light sapp-shadow sapp-europe" type="button">Europa</button>
-                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                  <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Link Europa 1</a></li>
-                    <li><a href="#">Link Europa 2</a></li>
-                    <li><a href="#">Link Europa 3</a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-
-            <!-- Oceania -->
-            <li>
-              <div class="uk-inline">
-                <button class="uk-button sapp-btn-light sapp-shadow sapp-oceania" type="button">Oceania</button>
-                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                  <ul class="uk-nav uk-dropdown-nav">
-                    <li><a href="#">Link Oceania 1</a></li>
-                    <li><a href="#">Link Oceania 2</a></li>
-                    <li><a href="#">Link Oceania 3</a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-        <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
-        <div class="uk-navbar-left uk-hidden@m">
-          <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
-            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
-          </a>
-        </div>
-
-        <!-- Login e Registrazione a destra -->
-        <div class="uk-navbar-right">
-          <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" href="#">Login</a>
-          <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" href="#">Registrati</a>
-        </div>
-
+          </div>
+        </ul>
       </div>
-    </div>
-  </nav>
 
-  <!-- Offcanvas Menu per dispositivi più piccoli di tablet -->
-  <div id="offcanvas-menu" uk-offcanvas="overlay: true">
-    <div class="uk-offcanvas-bar">
-      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
+      <div class="uk-navbar-left uk-hidden@m">
+        <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
+          <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+        </a>
+      </div>
 
+      <!-- Login e Registrazione a destra -->
+      <div class="uk-navbar-right">
+        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/login}">Login</a>
+        <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
+      </div>
 
-      <ul class="uk-nav uk-nav-default sapp-font">
-        <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" href="#">Login</a></li>
-        <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" href="#">Registrati</a></li>
-        <li class="uk-nav-divider"></li>
-
-        <li><a href="#">Tutti Gli Alberi</a></li>
-        <li class="uk-nav-header">Americhe</li>
-        <ul class="uk-nav-sub">
-          <li><a href="#">Link America 1</a></li>
-          <li><a href="#">Link America 2</a></li>
-          <li><a href="#">Link America 3</a></li>
-        </ul>
-        <li class="uk-nav-header">Asia</li>
-        <ul class="uk-nav-sub">
-          <li><a href="#">Link Asia 1</a></li>
-          <li><a href="#">Link Asia 2</a></li>
-          <li><a href="#">Link Asia 3</a></li>
-        </ul>
-        <!-- Continua con gli altri continenti come Africa, Europa, Oceania -->
-
-        <!-- Login e Registrazione in Offcanvas -->
-
-
-      </ul>
     </div>
   </div>
+</nav>
+
+<!-- Offcanvas Menu per dispositivi più piccoli di tablet -->
+<div id="offcanvas-menu" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+    <ul class="uk-nav uk-nav-default sapp-font">
+      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</a></li>
+      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</a></li>
+      <li class="uk-nav-divider"></li>
+
+      <li><a href="#">Tutti Gli Alberi</a></li>
+
+      <div th:each="continente:${alberiPerContinente}" >
+        <li class="uk-nav-header" th:text="${continente.key}"></li>
+        <div>
+          <ul class="uk-nav-sub">
+            <li th:each="albero:${continente.value}"  >
+              <a  th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"> </a> </li>
+          </ul>
+        </div>
+    </ul>
+  </div>
+</div>
 
   <section class="uk-section uk-padding-medium">
     <div class="uk-container uk-flex uk-flex-middle uk-flex-center uk-flex-row">
@@ -237,6 +176,24 @@
               <option>ApplePay/GooglePay</option>
               <option>Addebito Diretto</option>
             </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data di nascita e Seleziona file per immagine profilo con larghezze 4/6 e 2/6 -->
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-2-3@s">
+          <label class="uk-form-label sapp-font" for="birthdate">Data di Nascita</label>
+          <div class="uk-form-controls">
+            <input class="uk-input sapp-font-light sapp-angle" id="birthdate" type="date" required>
+          </div>
+        </div>
+
+        <div class="uk-width-1-3@s">
+          <label class="uk-form-label sapp-font" for="profile-pic">Immagine Profilo</label>
+          <div class="uk-form-controls" uk-form-custom="target: true">
+            <input type="file" id="profile-pic" aria-label="Seleziona immagine del profilo" accept="image/*" required>
+            <input class="uk-input uk-width-1-1 sapp-font-light sapp-angle" type="text" placeholder="Seleziona file" aria-label="Seleziona immagine" disabled>
           </div>
         </div>
       </div>
