@@ -256,3 +256,47 @@
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>
+<!--
+<h1>Registrazione Utente</h1>
+<form th:object="${utente}" method="post">
+  <label for="nome">Nome</label>
+   <input type="text" th:field="*{nome}" name="nome" id="nome" required>
+  <br>
+
+  <label for="cognome">Cognome</label>
+   <input type="text" th:field="*{cognome}"  name="cognome" id="cognome" required>
+  <br>
+
+  <label for="email">Email</label> 
+  <input type="email" th:field="*{email}" name="email" id="email" required> <br>
+
+
+  <label for="username">Username</label> 
+  <input type="text" th:field="*{username}" name="username" id="username" required>
+  <p th:if="${duplicato != null}" th:text="${duplicato}"></p>
+  <br>
+  &lt;!&ndash;  da dove arriva duplicato ??? &ndash;&gt;
+
+  <label for="password">Password</label> 
+  <input type="password" th:field="*{password}"  name="password" id="password" required>
+  <br>
+
+  <label for="pagamento">Metodo di pagamento</label>
+  <select name="pagamento" id="pagamento" th:field="*{metodoPagamento}" required>
+    <option value="payal">Paypal</option>
+    <option value="google">Google Pay</option>
+    <option value="apple">Apple Pay</option>
+    <option value="addebito">Addebito Diretto</option>
+    <option value="carta">Carta di debito/credito</option>
+  </select>
+  <br>
+
+  <label for="dataNascita">Data di Nascita: </label> <input type="date" th:field="*{dataNascita}"  name="dataNascita" id="dataNascita" required>
+  <br>
+
+  <label for="foto">Foto</label> <input type="file" th:field="*{foto}" name="foto" id="foto">
+  <br>
+  &lt;!&ndash; facciamo che la foto non è required e non dà errori... &ndash;&gt;
+
+  <input type="submit" value="Registrati">
+</form>-->
