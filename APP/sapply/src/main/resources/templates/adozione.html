@@ -29,5 +29,30 @@
     </div>
 </div>
 
+<!-- facciamo qua il form -->
+<form id="formAdozione" th:action="@{/adozione/conferma}" method="post">
+    <input type="hidden" name="alberoId" th:value="${albero.id}" >
+    <label for="quantita">Quantità: </label>
+    <input type="number" id="quantita" name="quantita" min="1" required>
+
+<!--  bottone di conferma  -->
+    <button type="button" id="bottoneConferma">Conferma Adozione!</button>
+    <script>
+
+        const bottone = document.getElementById("bottoneConferma");
+
+        bottone.addEventListener("click", confermaAdozione);
+
+        function confermaAdozione(){
+        const quantita = document.getElementById("quantita").value;
+
+        if(confirm("Confermi di voler adottare " + quantita + " albero/i?"))
+            {
+                document.getElementById("formAdozione").submit();
+            }
+        }
+    </script>
+</form>
+
 </body>
 </html>

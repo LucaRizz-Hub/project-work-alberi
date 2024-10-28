@@ -27,7 +27,7 @@ public class Adozione {
     private int quantita;
 
     @Column (name = "costo_totale")
-    private  int costoTotale;
+    private  double costoTotale;
 
     public int getId() {
         return id;
@@ -69,11 +69,11 @@ public class Adozione {
         this.quantita = quantita;
     }
 
-    public int getCostoTotale() {
+    public double getCostoTotale() {
         return costoTotale;
     }
 
-    public void setCostoTotale(int costoTotale) {
+    public void setCostoTotale(double costoTotale) {
         this.costoTotale = costoTotale;
     }
 }
