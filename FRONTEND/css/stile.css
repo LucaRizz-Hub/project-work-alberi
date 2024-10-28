@@ -1,0 +1,191 @@
+/* Impostazione dello sfondo per l'intera pagina */
+body {
+    font-family: "Open Sans", sans-serif;
+    background-size: cover;
+    background-color: #fdfdfd;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100%;
+    transition: background-position 0.5s ease-out;
+
+}
+
+/* Stile per il div che contiene il form per centrarlo */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo bianco con trasparenza */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.w-20 {
+    width: 18%;
+    margin-left: 2%;
+}
+
+.sapp-angle{
+    border-radius: 10px 10px 0 10px;
+}
+
+/* Stile base del bottone */
+.sapp-btn {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    color: white; /* colore del testo */
+    border-radius: 10px 10px 0 10px; /* angoli arrotondati solo in alto a sinistra e destra */
+    transition: all 0.5s ease; /* transizione per hover */
+    position: relative;
+}
+
+/* Hover stato: cambia il colore e arrotonda altri angoli */
+.sapp-btn:hover {
+    color: white;
+    border-radius: 0 10px 10px 10px; /* cambia gli angoli arrotondati */
+}
+
+/* Arrotondamento specifico: escluso in basso a destra */
+.sapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px 10px 10px 0; /* angolo arrotondato solo su 3 lati */
+    pointer-events: none;
+}
+
+/* Stile base del bottone */
+.sapp-btn-light {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    color: white; /* colore del testo */
+    border-radius: 10px 10px 0 10px; /* angoli arrotondati solo in alto a sinistra e destra */
+    transition: all 0.5s ease; /* transizione per hover */
+    position: relative;
+}
+
+/* Hover stato: cambia il colore e arrotonda altri angoli */
+.sapp-btn-light:hover {
+    color: white;
+    border-radius: 0 10px 10px 10px; /* cambia gli angoli arrotondati */
+}
+
+/* Arrotondamento specifico: escluso in basso a destra */
+.sapp-btn-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px 10px 10px 0; /* angolo arrotondato solo su 3 lati */
+    pointer-events: none;
+}
+
+.sapp-font-light{
+    font-family: 'Open Sans', sans-serif;
+    font-color: #04151F;
+    font-weight: lighter;
+    font-size: 0.8rem;
+}
+.sapp-font-light-reg{
+    font-family: 'Open Sans', sans-serif;
+    font-color: #04151F;
+    font-weight: lighter;
+    font-size: 0.9rem;
+}
+.sapp-font{
+    font-family: 'Open Sans', sans-serif;
+    font-color: #04151F;
+    font-weight: bold;
+}
+.sapp-font-alt{
+    font-family: 'Bree Serif', sans-serif;
+    font-color: #04151F;
+}
+
+.sapp-green{
+    background-color: #499c7b;
+}
+.sapp-shadow {
+    border: none;
+    box-shadow: 0 0 0 3px rgba(4, 21, 31, 0.01); /* Ombra solida al posto del bordo */
+}
+
+.sapp-green:hover{
+    background-color: #49887b;
+}
+
+/* Americhe */
+.sapp-america {
+    background-color: #d50202; /* Verde per le Americhe */
+    color: white;
+}
+
+/* Asia */
+.sapp-asia {
+    background-color: #FF5722; /* Arancione per l'Asia */
+    color: white;
+}
+
+/* Africa */
+.sapp-africa {
+    background-color: #FF9800; /* Giallo scuro per l'Africa */
+    color: white;
+}
+
+/* Europa */
+.sapp-europa {
+    background-color: #3F51B5; /* Blu per l'Europa */
+    color: white;
+}
+
+/* Oceania */
+.sapp-oceania {
+    background-color: #9C27B0; /* Viola per l'Oceania */
+    color: white;
+}
+
+.sapp-blue{
+    background-color: #4169E1;
+}
+
+.sapp-blue:hover{
+    background-color: #4266AE;
+}
+.sapp-border{
+    border: 3px solid rgba(4, 21, 31, 0.19) !important;
+    box-shadow: none;
+}
+
+
+.sapp-card-border{
+    border: 3px solid #f2f2f2 !important;
+    box-shadow: none;
+}
+#mappamondo-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.albero {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.uk-container.uk-height-expand {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh; /* L'altezza minima copre tutta la finestra */
+}
