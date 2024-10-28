@@ -55,8 +55,8 @@
 
       <!-- Login e Registrazione a destra -->
       <div class="uk-navbar-right">
-        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" href="#">Login</a>
-        <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" href="#">Registrati</a>
+        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/login}">Login</a>
+        <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
       </div>
 
     </div>
@@ -70,8 +70,8 @@
 
 
     <ul class="uk-nav uk-nav-default sapp-font">
-      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" href="#">Login</a></li>
-      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" href="#">Registrati</a></li>
+      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</a></li>
+      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</a></li>
       <li class="uk-nav-divider"></li>
 
       <li><a href="#">Tutti Gli Alberi</a></li>
@@ -101,8 +101,7 @@
 
       <!-- Login e Registrazione in Offcanvas -->
 
-
-    </ul>
+     </ul>
   </div>
 </div>
 
@@ -189,7 +188,7 @@
         <button class="uk-button uk-button-primary uk-width-1-1 sapp-font sapp-angle sapp-blue sapp-btn" type="submit">Registrati</button>
       </div>
       <div class="uk-margin">
-        <h5 class="uk-text-right sapp-font-light-reg">Hai già effettuato la registrazione? <a href="signin.html">Accedi</a></h5>
+        <h5 class="uk-text-right sapp-font-light-reg">Hai già effettuato la registrazione? <a th:href="@{/login}">Accedi</a></h5>
       </div>
 
     </form>

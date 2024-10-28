@@ -3,16 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Registrati</title>
+
+  <!-- Google Fonts - Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
+  <link rel="stylesheet" href="css/stile.css"/>
+
 </head>
 <body>
-<h1>Login</h1>
-<p th:if="${error}" style="...">Credenziali Errate</p>
-<form action="" method="post">
-  <label for="username">Username</label> <input type="text" name="username" id="username"> <br>
-  <label for="password">Password</label> <input type="password" name="password" id="password"> <br>
-  <input type="submit" value="Login">
 
-</form>
+<nav class="uk-navbar-container uk-padding-small">
+  <div class="uk-container">
+    <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
+
+      <!-- Navbar per schermi medi o più grandi -->
+      <div class="uk-navbar-left uk-visible@m">
+        <ul class="uk-navbar-nav">
+          <!-- Itera su ogni continente -->
+          <div th:each="continente : ${alberiPerContinente}">
+            <li>
+              <!-- Pulsante per il continente -->
+              <div class="uk-inline uk-margin-small-left">
+                <button class="uk-button sapp-btn-light sapp-shadow"
+                        th:classappend="'sapp-' + ${continente.key.toLowerCase()}"
+                        type="button"
+                        th:text="${continente.key}"> <!-- Nome del continente -->
+                </button>
+                <!-- Dropdown degli alberi del continente -->
+                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                  <ul class="uk-nav uk-dropdown-nav">
+                    <!-- Itera su ogni albero nel continente -->
+                    <li th:each="albero : ${continente.value}">
+                      <a th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+
+      <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
+      <div class="uk-navbar-left uk-hidden@m">
+        <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
+          <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+        </a>
+      </div>
+
+      <!-- Login e Registrazione a destra -->
+      <div class="uk-navbar-right">
+        <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/login}">Login</a>
+        <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Menu per dispositivi più piccoli di tablet -->
+<div id="offcanvas-menu" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+
+    <ul class="uk-nav uk-nav-default sapp-font">
+      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green" th:href="@{/login}">Login</a></li>
+      <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue" th:href="@{/registrazione}">Registrati</a></li>
+      <li class="uk-nav-divider"></li>
+
+      <li><a href="#">Tutti Gli Alberi</a></li>
+
+      <div th:each="continente:${alberiPerContinente}" >
+        <li class="uk-nav-header" th:text="${continente.key}"></li>
+        <div>
+          <ul class="uk-nav-sub">
+            <li th:each="albero:${continente.value}"  >
+              <a  th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"> </a> </li>
+          </ul>
+        </div>
+
+
+     </ul>
+  </div>
+</div>
+
+
+<!-- Contenitore per centrare il form -->
+<div class="uk-flex uk-flex-center uk-flex-middle uk-margin-xlarge-top">
+  <div class="form-container uk-width-1-4@m uk-width-1-2@s uk-padding sapp-angle"
+  >
+    <h2 class="uk-heading-line uk-text-left sapp-font">
+      <span>Login</span>
+    </h2>
+    <form class="uk-form-stacked" action="" method="post">
+      <p th:if="${error}" style="...">Credenziali Errate</p>
+      <!-- Username -->
+      <div class="uk-margin">
+        <label class="uk-form-label sapp-font" for="username">Username</label>
+
+        <div class="uk-form-controls">
+          <input
+                  class="uk-input sapp-font-light sapp-angle"
+                  name="username"
+                  id="username"
+                  type="text"
+                  placeholder="Inserisci il tuo username"
+                  required
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="uk-margin">
+        <label class="uk-form-label sapp-font" for="password"
+        >Password</label
+        >
+        <div class="uk-form-controls">
+          <input
+                  class="uk-input sapp-font-light sapp-angle"
+                  name="password"
+                  id="password"
+                  type="password"
+                  placeholder="Inserisci la tua password"
+                  required
+          />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="uk-margin">
+        <button
+                class="uk-button uk-width-1-1 sapp-font sapp-angle sapp-green sapp-btn"
+                type="submit"
+                value="Login"
+
+        >
+          Accedi
+        </button>
+      </div>
+      <div class="uk-margin">
+        <h5 class="uk-text-right sapp-font-light">
+          Non hai ancora effettuato la registrazione?
+          <a th:href="@{/registrazione}">Registrati</a>
+        </h5>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/planet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>
 </html>
+
+
+<!-- <h1>Login</h1>
+<p th:if="${error}" style="...">Credenziali Errate</p>
+<form action="" method="post">
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" /> <br />
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" /> <br />
+  <input type="submit" value="Login" />
+</form> -->
