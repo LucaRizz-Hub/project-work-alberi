@@ -42,14 +42,6 @@ public class AdozioneController {
 
         Utente utente = (Utente) session.getAttribute("utente");
 
-        // se l'utente non è loggato rimandalo alla pagina di login
-        // non dovrebbe chiederlo dopo?
-
-        // ma infatti viene già controllato alla riga 66, questo potremmo toglierlo
-//        if (utente == null){
-//            return "redirect:/login";
-//        }
-
         model.addAttribute("utente", utente);
         return "adozione"; // la pagina di dettaglio e conferma
 

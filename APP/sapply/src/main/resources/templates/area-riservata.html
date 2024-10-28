@@ -14,5 +14,25 @@
   <a th:href="@{/profiloutente}"><li>Visualizza il tuo profilo 👥</li></a>
   <a th:href="@{/areariservata/logout}"><li>Esci dall'account 🚪</li></a>
 </ul>
+
+<br>
+<div th:if="${adozioni.size() > 0}">
+  <ul>
+    <li th:each="adozione : ${adozioni}">
+      Albero: <span th:text="${adozione.albero.specie}"></span><br>
+      Quantità: <span th:text="${adozione.quantita}"></span><br>
+      Data di adozione: <span th:text="${adozione.dataAdozione}"></span><br>
+      Costo Totale: <span th:text="${adozione.costoTotale} + '€/anno'"></span><br>
+
+    </li>
+  </ul>
+
+</div>
+
+<div th:if="${adozioni.size() == 0}">
+  <p>Non hai ancora adottato alberi. Esplora i nostri alberi disponibili e inizia subito la tua prima adozione!</p>
+
+</div>
+
 </body>
 </html>

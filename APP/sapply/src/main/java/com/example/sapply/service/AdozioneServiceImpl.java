@@ -19,8 +19,8 @@ public class AdozioneServiceImpl implements AdozioneService{
     private AdozioneDao adozioneDao;
 
     @Override
-    public List<Adozione> elencoAdozioni(){
-        return (List<Adozione>) adozioneDao.findAll();
+    public List<Adozione> elencoAdozioni(Utente utente){
+        return adozioneDao.findByUtente(utente);
     }
 
     @Override

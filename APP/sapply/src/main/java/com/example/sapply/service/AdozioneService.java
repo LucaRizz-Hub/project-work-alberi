@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AdozioneService {
 
-    List<Adozione> elencoAdozioni();
+    List<Adozione> elencoAdozioni(Utente utente);
     Adozione datiAdozione(int id);
     Adozione creaAdozione(Utente utente, Albero albero, int quantita);
 //    void invioOrdine(HttpSession session);
