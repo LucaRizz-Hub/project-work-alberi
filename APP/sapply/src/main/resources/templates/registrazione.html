@@ -54,19 +54,6 @@
         </a>
       </div>
 
-      <!-- Login e Registrazione oppure Area Utente quando loggato -->
-      <div class="uk-navbar-right">
-        <div th:if="${utente != null}">
-          <!-- Messaggio di benvenuto con username e immagine profilo -->
-          <span class="sapp-font-light-reg uk-visible@m">Ciao, </span><span class="sapp-font uk-margin-small-right uk-visible@m" th:text="${utente.username}"></span>
-          <img th:src="@{${utente.fotoCodificata == null ? 'images/noUtente.jpg' : utente.fotoCodificata}}" class="uk-border-circle uk-margin-medium-right uk-visible@m" alt="Profile Picture" width="50" height="50">
-          <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/areariservata}">Area Utente</a>
-        </div>
-        <div th:if="${utente == null}">
-          <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/login}">Login</a>
-          <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -79,16 +66,6 @@
 
 
     <ul class="uk-nav uk-nav-default sapp-font">
-      <div th:if="${utente != null}">
-        <!-- Messaggio di benvenuto con username e immagine profilo -->
-        <li class="uk-margin-small-bottom"><span class="sapp-font-light-white uk-visible@s">Ciao, </span><span class="sapp-font-white uk-margin-small-right uk-visible@s" th:text="${utente.username}"></span>
-          <img th:src="@{${utente.fotoCodificata == null ? 'images/noUtente.jpg' : utente.fotoCodificata}}" class="uk-border-circle uk-margin-medium-right uk-visible@s" alt="Profile Picture" width="50" height="50"></li>
-        <li><a class="uk-margin-small-bottom uk-button sapp-btn sapp-green sapp-shadow uk-visible@s" th:href="@{/areariservata}">Area Utente</a></li>
-      </div>
-      <div th:if="${utente == null}">
-        <li><a class="uk-button uk-margin-bottom sapp-btn sapp-green uk-visible@s" th:href="@{/login}">Login</a></li>
-        <li><a class="uk-button uk-margin-bottom sapp-btn sapp-blue uk-visible@s" th:href="@{/registrazione}">Registrati</a></li>
-      </div>
 
       <li class="uk-nav-divider"></li>
 

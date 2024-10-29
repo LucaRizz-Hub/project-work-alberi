@@ -4,6 +4,7 @@ import com.example.sapply.model.Albero;
 import com.example.sapply.model.Utente;
 import com.example.sapply.service.AlberoService;
 import com.example.sapply.service.UtenteService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class RegistrazioneController {
 
     @GetMapping
     public String getPage(Model model) {
+
         Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
         model.addAttribute("alberiPerContinente", alberiPerContinente);
         Utente utente = new Utente();
