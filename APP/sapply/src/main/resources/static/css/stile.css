@@ -87,13 +87,24 @@ body {
     border-radius: 10px 10px 10px 0; /* angolo arrotondato solo su 3 lati */
     pointer-events: none;
 }
-
+.sapp-font-white{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #f2f2f2;
+}
+.sapp-font-light-white{
+    font-family: 'Open Sans', sans-serif;
+    color: #f2f2f2;
+    font-weight: lighter;
+    font-size: 0.9rem;
+}
 .sapp-font-light{
     font-family: 'Open Sans', sans-serif;
     font-color: #04151F;
     font-weight: lighter;
     font-size: 0.8rem;
 }
+
 .sapp-font-light-reg{
     font-family: 'Open Sans', sans-serif;
     color: #04151F;
@@ -108,6 +119,7 @@ body {
     font-family: 'Bree Serif', sans-serif;
     color: #04151F;
     font-size: 4rem;
+    text-decoration: none;
 }
 .sapp-font-alt-head{
     font-family: 'Bree Serif', sans-serif;
