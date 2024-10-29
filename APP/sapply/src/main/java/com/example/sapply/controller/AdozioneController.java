@@ -2,9 +2,11 @@ package com.example.sapply.controller;
 
 
 import com.example.sapply.model.Albero;
+import com.example.sapply.model.Recensione;
 import com.example.sapply.model.Utente;
 import com.example.sapply.service.AdozioneService;
 import com.example.sapply.service.AlberoService;
+import com.example.sapply.service.RecensioneService;
 import com.example.sapply.service.UtenteService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class AdozioneController {
     private AlberoService alberoService;
 
     @Autowired
+    private RecensioneService recensioneService;
+
+    @Autowired
     private AdozioneService adozioneService;
 
     @Autowired
@@ -46,6 +51,10 @@ public class AdozioneController {
         model.addAttribute("alberiPerContinente", alberiPerContinente);
         Utente utente = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utente);
+
+        // Recupera le recensioni per l'albero
+        List<Recensione> recensioni = recensioneService.trovaRecensioniPerAlbero(idAlbero);
+        model.addAttribute("recensioni", recensioni);
         return "adozione"; // la pagina di dettaglio e conferma
     }
 
