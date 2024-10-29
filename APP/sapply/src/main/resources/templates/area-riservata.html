@@ -158,9 +158,24 @@
       Quantità: <span th:text="${adozione.quantita}"></span><br>
       Data di adozione: <span th:text="${adozione.dataAdozione}"></span><br>
       Costo Totale: <span th:text="${adozione.costoTotale} + '€/anno'"></span><br>
-      <a th:href="@{/recensione/crea(idAdozione=${adozione.id})}">
-        Lascia una recensione
-      </a>
+      <hr>
+
+<!--  Controlla se esiste una recensione associata    -->
+      <div th:if="${recensioniMap[adozione.id] == null}">
+        <a th:href="@{/recensione/crea(idAdozione=${adozione.id})}">
+          Lascia una recensione
+        </a>
+      </div>
+
+
+      <div th:if="${recensioniMap[adozione.id] != null}">
+
+        <p><strong>La tua recensione: </strong><span th:text="${recensioniMap[adozione.id].commento}"></span><br>
+        <strong>Valutazione: </strong> <span th:text="${recensioniMap[adozione.id].valutazione}"></span></p>
+      </div>
+
+
+
     </li>
   </ul>
 

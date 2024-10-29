@@ -17,4 +17,11 @@ public class RecensioneServiceImpl implements RecensioneService{
     public void salvaRecensione(Recensione recensione){
         recensioneDao.save(recensione);
     }
+
+    @Override
+    public Recensione trovaRecensione(int idAdozione) {
+        return recensioneDao.findByAdozioneId(idAdozione);
+    }
+
+
 }
