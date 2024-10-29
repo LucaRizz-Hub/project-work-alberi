@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Ott 25, 2024 alle 09:57
--- Versione del server: 10.4.28-MariaDB
--- Versione PHP: 8.0.28
+-- Host: 127.0.0.1
+-- Creato il: Ott 29, 2024 alle 11:11
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,7 +69,12 @@ INSERT INTO `albero` (`id`, `nome_albero`, `specie`, `descrizione`, `continente`
 (22, 'Pohutukawa', 'Metrosideros excelsa', 'Albero simbolo del Natale in Nuova Zelanda, noto per i fiori rossi vibranti.', 'Oceania', 'Nuova Zelanda', 40.00, 'albero_22.jpg', 60.00, 'Festa e vitalità.'),
 (23, 'Kauri', 'Agathis australis', 'Albero massiccio e longevo, noto per il legno di qualità superiore.', 'Oceania', 'Nuova Zelanda', 60.00, 'albero_23.jpg', 80.00, 'Stabilità e antichità.'),
 (24, 'Acacia dorata', 'Acacia pycnantha', 'Albero nazionale dell\'Australia, noto per i fiori gialli brillanti.', 'Oceania', 'Australia', 20.00, 'albero_24.jpg', 35.00, 'Ottimismo e prosperità.'),
-(25, 'Casuarina', 'Casuarina equisetifolia', 'Albero resistente al vento e all\'erosione costiera, dalle foglie aghiformi.', 'Oceania', 'Australia', 30.00, 'albero_25.jpg', 40.00, 'Protezione e resilienza.');
+(25, 'Casuarina', 'Casuarina equisetifolia', 'Albero resistente al vento e all\'erosione costiera, dalle foglie aghiformi.', 'Oceania', 'Australia', 30.00, 'albero_25.jpg', 40.00, 'Protezione e resilienza.'),
+(26, 'Albero del tè', 'Melaleuca alternifolia', 'Albero dalle foglie aromatiche, usato per produrre olio essenziale del tè, noto per le proprietà antisettiche.', 'Oceania', 'Australia', 20.00, 'Albero_26', 30.00, 'Purificazione e guarigione.'),
+(27, 'Lapacho', 'Tabebuia impetiginosa', 'Albero dai fiori rosa brillanti, noto per le sue proprietà medicinali.', 'America', 'Brasile', 30.00, 'Albero_27', 35.00, 'Guarigione e forza.'),
+(28, 'Betulla', 'Betula pendula', 'Albero dalle foglie leggere e corteccia bianca, simbolo di purezza e resilienza nelle regioni temperate.', 'Europa', 'Finlandia', 25.00, 'Albero_28', 60.00, 'Purezza e rinnovamento.'),
+(29, 'Nespolo Giapponese', 'Eriobotrya japonica', 'Albero dai frutti dolci e succosi, apprezzato per il suo valore decorativo e alimentare.', 'Asia', 'Giappone', 35.00, 'Albero_29', 45.00, 'Dolcezza e vitalità.'),
+(30, 'Marula', 'Sclerocarya birrea', 'Albero nativo delle savane africane, noto per i frutti nutrienti utilizzati per fare bevande e oli.', 'Africa', 'Sudafrica', 30.00, 'Albero_30', 40.00, 'Abbondanza e nutrimento.');
 
 --
 -- Indici per le tabelle scaricate
@@ -89,7 +94,7 @@ ALTER TABLE `albero`
 -- AUTO_INCREMENT per la tabella `albero`
 --
 ALTER TABLE `albero`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
