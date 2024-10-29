@@ -6,18 +6,37 @@ document.querySelectorAll('.albero').forEach(function(element) {
 });
 
 function mostraDettagliAlbero(alberoId) {
-    // Cambia il contenuto dei dettagli a destra in base all'ID dell'albero
-    const titolo = document.getElementById('albero-titolo');
-    const descrizione = document.getElementById('albero-descrizione');
+    // Seleziona gli elementi della card
+    const nomeAlbero = document.getElementById('nomeAlbero');
+    const paese = document.getElementById('paese');
+    const significato = document.getElementById('significato');
+    const prezzo = document.getElementById('prezzo');
+    const foto = document.getElementById('foto');
+    const adoptButton = document.getElementById('adopt-button');
 
+    // Aggiorna le informazioni della card in base all'albero selezionato
     if (alberoId === '1') {
-        titolo.textContent = "Albero 1: Quercia";
-        descrizione.textContent = "Questo albero è stato piantato in Italia e ha 10 anni.";
+        nomeAlbero.textContent = "Quercia - Quercius Quercinus";
+        paese.textContent = "Paese: Italia";
+        significato.textContent = "Significato: Simbolo di forza e resistenza.";
+        prezzo.textContent = "€20,00 /anno";
+        foto.src = "../images/albero_1.jpg"; // Sostituisci con il percorso dell'immagine
     } else if (alberoId === '2') {
-        titolo.textContent = "Albero 2: Pino";
-        descrizione.textContent = "Questo albero si trova in Canada ed è alto 15 metri.";
+        nomeAlbero.textContent = "Pino";
+        paese.textContent = "Paese: Canada";
+        significato.textContent = "Significato: Simbolo di longevità e resilienza.";
+        prezzo.textContent = "€25,00 /anno";
+        foto.src = "path/to/pino.jpg"; // Sostituisci con il percorso dell'immagine
     } else if (alberoId === '3') {
-        titolo.textContent = "Albero 3: Baobab";
-        descrizione.textContent = "Questo albero si trova in Africa ed è noto per la sua grande longevità.";
+        nomeAlbero.textContent = "Baobab";
+        specieAlbero.textContent = "Specie: Baobab";
+        paese.textContent = "Paese: Africa";
+        significato.textContent = "Significato: Simbolo di saggezza e adattabilità.";
+        prezzo.textContent = "€30,00 /anno";
+        foto.src = "path/to/baobab.jpg"; // Sostituisci con il percorso dell'immagine
     }
+
+    // Mostra il tasto "Adottami" e imposta l'href con l'ID dell'albero
+    adoptButton.style.display = 'flex';
+    adoptButton.href = `/adozione?id=${alberoId}`;
 }
