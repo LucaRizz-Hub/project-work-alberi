@@ -90,7 +90,61 @@
   </div>
 </div>
 
+<header class="uk-container">
+  <div class="uk-container uk-flex uk-flex-center uk-flex-middle" uk-grid>
+    <!-- Logo SVG -->
+    <a th:href="@{/}">
+      <div class="svg-wrapper uk-margin-medium-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94 104" width="150" height="150">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: none;
+                stroke: #1e1e1c;
+                stroke-linecap: round;
+                stroke-miterlimit: 10;
+                stroke-width: 4px;
+                stroke-dasharray: 100;
+                stroke-dashoffset: 100;
+                animation: draw 4s ease forwards;
+              }
 
+              @keyframes draw {
+                to {
+                  stroke-dashoffset: 0;
+                }
+              }
+            </style>
+          </defs>
+          <path class="cls-1" d="M4.95,82.32l11.31-9.72c1.91-1.64,5.74-1.6,7.57.07l3.92,3.58c1.65,1.5,4.99,1.71,7.06.44h0c.93-.57,1.45-1.36,1.45-2.18v-18.63h0c-12.63-3.3-22.36-10.01-26.6-18.35l-.61-1.2"/>
+          <path class="cls-1" d="M81.91,82.32l-11.31-9.72c-1.91-1.64-5.74-1.6-7.57.07l-3.92,3.58c-1.65,1.5-4.99,1.71-7.06.44h0c-.93-.57-1.45-1.36-1.45-2.18v-18.63h0c12.63-3.3,22.36-10.01,26.6-18.35l.61-1.2"/>
+          <line class="cls-1" x1="43.49" y1="83.76" x2="43.49" y2="14.09"/>
+          <path class="cls-1" d="M20.6,22.47s4.93,15.41,23.1,14.88"/>
+          <path class="cls-1" d="M66.8,22.47s-4.93,15.41-23.1,14.88"/>
+          <path class="cls-1" d="M2,31.14c0-2.86,2.32-5.19,5.19-5.19"/>
+          <path class="cls-1" d="M12.37,31.14c0,2.86-2.32,5.19-5.19,5.19s-5.19-2.32-5.19-5.19"/>
+          <path class="cls-1" d="M7.19,25.95c2.86,0,5.19,2.32,5.19,5.19"/>
+          <path class="cls-1" d="M14.14,16.03c0-2.86,2.32-5.19,5.19-5.19"/>
+          <path class="cls-1" d="M24.52,16.03c0,2.86-2.32,5.19-5.19,5.19s-5.19-2.32-5.19-5.19"/>
+          <path class="cls-1" d="M19.33,10.84c2.86,0,5.19,2.32,5.19,5.19"/>
+          <path class="cls-1" d="M48.68,7.19c0,2.86-2.32,5.19-5.19,5.19s-5.19-2.32-5.19-5.19,2.32-5.19,5.19-5.19"/>
+          <path class="cls-1" d="M43.49,2c2.86,0,5.19,2.32,5.19,5.19"/>
+          <path class="cls-1" d="M72.85,15.56c0,2.86-2.32,5.19-5.19,5.19s-5.19-2.32-5.19-5.19,2.32-5.19,5.19-5.19"/>
+          <path class="cls-1" d="M67.66,10.37c2.86,0,5.19,2.32,5.19,5.19"/>
+          <path class="cls-1" d="M73.4,31.14c0-2.86,2.32-5.19,5.19-5.19"/>
+          <path class="cls-1" d="M83.77,31.14c0,2.86-2.32,5.19-5.19,5.19s-5.19-2.32-5.19-5.19"/>
+          <path class="cls-1" d="M78.58,25.95c2.86,0,5.19,2.32,5.19,5.19"/>
+        </svg>
+      </div>
+    </a>
+    <!-- Scritta e Divisore -->
+    <div class="uk-flex uk-flex-middle">
+      <span class="sapp-font-alt">Sapply</span>
+      <div class="uk-divider-vertical uk-margin-large-left uk-margin-large-right"></div>
+      <span class="sapp-font-alt-head">Adotta un albero,<br>&emsp; contribuisci a un futuro più verde.</span>
+    </div>
+  </div>
+</header>
 <!-- Contenitore per centrare il form -->
 <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-xlarge-top">
   <div class="form-container uk-width-1-4@m uk-width-1-2@s uk-padding sapp-angle sapp-shadow"

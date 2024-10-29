@@ -96,20 +96,25 @@ body {
 }
 .sapp-font-light-reg{
     font-family: 'Open Sans', sans-serif;
-    font-color: #04151F;
+    color: #04151F;
     font-weight: lighter;
     font-size: 0.9rem;
 }
 .sapp-font{
     font-family: 'Open Sans', sans-serif;
-    font-color: #04151F;
+    color: #04151F;
     font-weight: bold;
 }
 .sapp-font-alt{
     font-family: 'Bree Serif', sans-serif;
-    font-color: #04151F;
+    color: #04151F;
+    font-size: 4rem;
 }
-
+.sapp-font-alt-head{
+    font-family: 'Bree Serif', sans-serif;
+    color: #04151F;
+    font-size: 2rem;
+}
 .sapp-green{
     background-color: #499c7b;
 }
@@ -196,10 +201,6 @@ body {
     flex-direction: column;
     min-height: 80vh; /* L'altezza minima copre tutta la finestra */
 }
-
-#svg-object {
-    stroke: #06151e;
-    stroke-width: 8px;
-    width: 200px;
-    height: 200px;
+.svg-wrapper{
+    margin-right: -30px;
 }
