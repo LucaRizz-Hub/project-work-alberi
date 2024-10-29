@@ -45,10 +45,8 @@ public class AdozioneController {
         Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
         model.addAttribute("alberiPerContinente", alberiPerContinente);
         Utente utente = (Utente) session.getAttribute("utente");
-
         model.addAttribute("utente", utente);
         return "adozione"; // la pagina di dettaglio e conferma
-
     }
 
     @PostMapping("/conferma")

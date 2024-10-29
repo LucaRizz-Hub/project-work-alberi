@@ -93,20 +93,20 @@
   <div class="form-container uk-width-1-3@m uk-width-1-2@s uk-padding sapp-angle sapp-shadow">
 
     <h2 class="uk-heading-line uk-text-left sapp-font"><span>Registrazione</span></h2>
-    <form class="uk-form-stacked">
+    <form class="uk-form-stacked" th:object="${utente}" method="post" enctype="multipart/form-data">
 
       <!-- Nome e Cognome affiancati -->
       <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
         <div>
           <label class="uk-form-label sapp-font" for="nome">Nome</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" id="nome" type="text" placeholder="Inserisci il tuo nome" required>
+            <input class="uk-input sapp-font-light sapp-angle" id="nome" th:field="*{nome}" type="text" placeholder="Inserisci il tuo nome" required>
           </div>
         </div>
         <div>
           <label class="uk-form-label sapp-font" for="cognome">Cognome</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" id="cognome" type="text" placeholder="Inserisci il tuo cognome" required>
+            <input class="uk-input sapp-font-light sapp-angle" id="cognome" th:field="*{cognome}" type="text" placeholder="Inserisci il tuo cognome" required>
           </div>
         </div>
       </div>
@@ -116,13 +116,13 @@
         <div>
           <label class="uk-form-label sapp-font" for="username">Username</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" id="username" type="text" placeholder="Inserisci il tuo nickname" required>
+            <input class="uk-input sapp-font-light sapp-angle" id="username" th:field="*{username}" type="text" placeholder="Inserisci il tuo nickname" required>
           </div>
         </div>
         <div>
           <label class="uk-form-label sapp-font" for="password">Password</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" id="password" type="password" placeholder="Inserisci una password" required>
+            <input class="uk-input sapp-font-light sapp-angle" id="password" th:field="*{password}" type="password" placeholder="Inserisci una password" required>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
         <div>
           <label class="uk-form-label sapp-font" for="email">Email</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" id="email" type="email" placeholder="Inserisci la tua mail" required>
+            <input class="uk-input sapp-font-light sapp-angle" id="email" th:field="*{email}" type="email" placeholder="Inserisci la tua mail" required>
           </div>
         </div>
         <div>
@@ -145,13 +145,14 @@
       <!-- Password e Conferma Password affiancati -->
       <div class="uk-child-width-1-1@s uk-grid-small" uk-grid>
         <div>
-          <label class="uk-form-label sapp-font" for="email">Metodo di pagamento</label>
+          <label class="uk-form-label sapp-font" for="pagamento">Metodo di pagamento</label>
           <div class="uk-form-controls">
-            <select class="uk-select sapp-angle sapp-font-light">
-              <option>Carta di Credito</option>
-              <option>PayPal</option>
-              <option>ApplePay/GooglePay</option>
-              <option>Addebito Diretto</option>
+            <select class="uk-select sapp-angle sapp-font-light" name="pagamento" id="pagamento" th:field="*{metodoPagamento}" required>
+              <option value="payal">Paypal</option>
+              <option value="google">Google Pay</option>
+              <option value="apple">Apple Pay</option>
+              <option value="addebito">Addebito Diretto</option>
+              <option value="carta">Carta di debito/credito</option>
             </select>
           </div>
         </div>
@@ -162,14 +163,14 @@
         <div class="uk-width-2-3@s">
           <label class="uk-form-label sapp-font" for="birthdate">Data di Nascita</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" id="birthdate" type="date" required>
+            <input class="uk-input sapp-font-light sapp-angle" th:field="*{dataNascita}" id="birthdate" type="date" required>
           </div>
         </div>
 
         <div class="uk-width-1-3@s">
-          <label class="uk-form-label sapp-font" for="profile-pic">Immagine Profilo</label>
+          <label class="uk-form-label sapp-font" for="foto">Immagine Profilo</label>
           <div class="uk-form-controls" uk-form-custom="target: true">
-            <input type="file" id="profile-pic" aria-label="Seleziona immagine del profilo" accept="image/*" required>
+            <input type="file" id="foto" aria-label="Seleziona immagine del profilo" name="foto" required>
             <input class="uk-input uk-width-1-1 sapp-font-light sapp-angle" type="text" placeholder="Seleziona file" aria-label="Seleziona immagine" disabled>
           </div>
         </div>
@@ -179,7 +180,7 @@
         <button class="uk-button uk-button-primary uk-width-1-1 sapp-font sapp-angle sapp-blue sapp-btn" type="submit">Registrati</button>
       </div>
       <div class="uk-margin">
-        <h5 class="uk-text-right sapp-font-light-reg">Hai già effettuato la registrazione? <a href="signin.html">Accedi</a></h5>
+        <h5 class="uk-text-right sapp-font-light-reg">Hai già effettuato la registrazione? <a th:href="@{/login}">Accedi</a></h5>
       </div>
 
     </form>

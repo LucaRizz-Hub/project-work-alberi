@@ -109,10 +109,10 @@
                         <h4 class="uk-margin-medium-bottom sapp-font-light-reg" th:text="'Significato: ' + ${albero.significato}"></h4>
                         <!-- Prezzo formattato con due decimali e aggiunta di /anno -->
                         <h4 class="sapp-font-light-reg" th:text="'Prezzo: €' + ${#numbers.formatDecimal(albero.prezzo, 0, 'POINT', 2, 'COMMA')} + '/anno'"></h4>
-                        <button class="uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
-                                th:href="@{/adozione(id=${albero.id})}">
+                        <a class="uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
+                           th:href="@{/adozione(id=${albero.id})}">
                             Adottami
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

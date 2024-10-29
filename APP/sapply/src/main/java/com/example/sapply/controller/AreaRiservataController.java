@@ -33,15 +33,15 @@ public class AreaRiservataController {
     public String getPage(Model model,
                           HttpSession session){
         Utente utente = (Utente) session.getAttribute("utente");
-
         // Reindirizza al login se l'utente non è loggato
         if(utente == null){
             return "redirect:/login";
         }
-
         // Ottieni la lista di adozioni dell'utente
         List<Adozione> adozioni = adozioneService.elencoAdozioni(utente);
         // aggiungi questa lista al model così che l'HTML possa accedervi
+        List<Albero> alberi = alberoService.elencoAlberi();
+        model.addAttribute("alberi", alberi);
         Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
         model.addAttribute("alberiPerContinente", alberiPerContinente);
         model.addAttribute("adozioni", adozioni);
@@ -51,7 +51,7 @@ public class AreaRiservataController {
     @GetMapping("/logout")
     public String logoutUtente(HttpSession session){
         session.removeAttribute("utente");
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 }

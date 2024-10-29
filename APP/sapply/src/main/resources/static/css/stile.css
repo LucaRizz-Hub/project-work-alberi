@@ -196,3 +196,10 @@ body {
     flex-direction: column;
     min-height: 80vh; /* L'altezza minima copre tutta la finestra */
 }
+
+#svg-object {
+    stroke: #06151e;
+    stroke-width: 8px;
+    width: 200px;
+    height: 200px;
+}

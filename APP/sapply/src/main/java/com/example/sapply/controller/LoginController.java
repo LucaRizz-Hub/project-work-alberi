@@ -34,14 +34,11 @@ public class LoginController {
     ){
 
 
-        if(session.getAttribute("utente") != null)
-            return "redirect:/areariservata";
+      if(session.getAttribute("utente") != null)
+           return "redirect:/areariservata";
         model.addAttribute("error", error != null);
-
-
         Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
         model.addAttribute("alberiPerContinente", alberiPerContinente);
-
         return "login";
     }
 

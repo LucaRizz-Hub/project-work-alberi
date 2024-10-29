@@ -112,7 +112,7 @@
 <a th:href="@{/areariservata}">Torna all'area riservata</a>
     <h1 th:text="'Profilo di ' + ${utente.username}"></h1>
     <div id="quadroFoto">
-        <img th:src="@{'../static/images/' + ${utente.foto}}" th:alt="${utente.foto}">
+        <img th:src="@{${utente.fotoCodificata == null ? 'markerImage.png' : utente.fotoCodificata}}">
     </div>
 
 <table>

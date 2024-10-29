@@ -32,8 +32,8 @@ public class Utente {
     @Column(name= "metodo_pagamento")
     private String metodoPagamento;
 
-    @Column
-    private String foto;
+    @Column(name= "foto")
+    private String fotoCodificata;
 
     @Column(name = "data_di_nascita")
     private LocalDate dataNascita;
@@ -60,6 +60,14 @@ public class Utente {
 //    private List<Recensione> recensioni = new ArrayList<>();
 
     // GETTER SETTER
+
+    public String getFotoCodificata() {
+        return fotoCodificata;
+    }
+
+    public void setFotoCodificata(String fotoCodificata) {
+        this.fotoCodificata = fotoCodificata;
+    }
 
     public int getId() {
         return id;
@@ -115,14 +123,6 @@ public class Utente {
 
     public void setMetodoPagamento(String metodoPagamento) {
         this.metodoPagamento = metodoPagamento;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public LocalDate getDataNascita() {

@@ -1,6 +1,7 @@
 package com.example.sapply.controller;
 
 import com.example.sapply.model.Albero;
+import com.example.sapply.model.Utente;
 import com.example.sapply.service.AlberoService;
 import com.example.sapply.service.UtenteService;
 import jakarta.servlet.http.HttpSession;
@@ -32,8 +33,10 @@ public class AlberiController {
             Model model,
             HttpSession session
     ) {
-        if (session.getAttribute("utente") != null)
-            return "redirect:/areariservata";
+        //if (session.getAttribute("utente") != null)
+           // return "redirect:/areariservata";
+        Utente utente = (Utente) session.getAttribute("utente");
+        model.addAttribute("utente", utente);
         model.addAttribute("error", error != null);
         Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
         model.addAttribute("alberiPerContinente", alberiPerContinente);

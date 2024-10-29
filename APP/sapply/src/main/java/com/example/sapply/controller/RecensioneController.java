@@ -2,8 +2,11 @@ package com.example.sapply.controller;
 
 import com.example.sapply.model.Adozione;
 import com.example.sapply.model.Recensione;
+import com.example.sapply.model.Utente;
 import com.example.sapply.service.AdozioneService;
 import com.example.sapply.service.RecensioneService;
+import com.example.sapply.service.UtenteService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,9 @@ import java.time.LocalDate;
 public class RecensioneController {
 
     @Autowired
+    private UtenteService utenteService;
+
+    @Autowired
     private RecensioneService recensioneService;
 
     @Autowired
@@ -26,10 +32,11 @@ public class RecensioneController {
 
     @GetMapping("/crea")
     public String creaRecensione(@RequestParam("idAdozione") int idAdozione,
-                                 Model model){
+                                 Model model, HttpSession session) {
         // cerco la adozione dall'ID
         Adozione adozione = adozioneService.datiAdozione(idAdozione);
-
+        Utente utente = (Utente) session.getAttribute("utente");
+        model.addAttribute("utente", utente);
         model.addAttribute("adozione", adozione);
         model.addAttribute("idAdozione", idAdozione);
 
