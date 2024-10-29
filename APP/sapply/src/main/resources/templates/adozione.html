@@ -189,6 +189,23 @@
         }
     </script>
 </form>
+
+<h2>Recensioni</h2>
+
+<div th:if="${recensioni.size() > 0}">
+    <ul>
+        <li th:each="recensione : ${recensioni}">
+            <p><strong>Valutazione: </strong><span th:text="${recensione.valutazione}"></span></p>
+            <p><span th:text="${recensione.commento}"></span></p>
+            <p><small>Data: <span th:text="${recensione.dataRecensione}"></span></small></p>
+
+        </li>
+    </ul>
+</div>
+
+<div th:if="${recensioni.size() == 0}">
+    <p>Non ci sono ancora recensoini per questo albeor. Sii il primo a lasciare una recensione!</p>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>

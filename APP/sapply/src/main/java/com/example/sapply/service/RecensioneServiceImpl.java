@@ -23,5 +23,10 @@ public class RecensioneServiceImpl implements RecensioneService{
         return recensioneDao.findByAdozioneId(idAdozione);
     }
 
+    @Override
+    public List<Recensione> trovaRecensioniPerAlbero(int idAlbero) {
+        return recensioneDao.findByAdozione_Albero_Id(idAlbero);
+    }
+
 
 }
