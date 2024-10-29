@@ -19,7 +19,7 @@ public class UtenteServiceImpl  implements UtenteService {
     @Override
     public boolean loginUtente(String username, String password, HttpSession session) {
         Utente utente = utenteDao.findByUsernameAndPassword(username, password);
-        if(utente != null) {
+        if (utente != null) {
             session.setAttribute("utente", utente);
             return true;
         }
@@ -43,9 +43,17 @@ public class UtenteServiceImpl  implements UtenteService {
 
     @Override
     public boolean controlloUsername(String username) {
-        if(utenteDao.findByUsername(username) == null)
+        if (utenteDao.findByUsername(username) == null)
             return true;
         return false;
+    }
+
+    @Override
+    public boolean isPasswordSicura(String password) {
+        if (password.length() < 8) return false;
+        boolean hasNumber = password.matches(".*\\d.*");
+        boolean hasSpecialChar = password.matches(".*[!@#$%^&*].*");
+        return hasNumber && hasSpecialChar;
     }
 }
 

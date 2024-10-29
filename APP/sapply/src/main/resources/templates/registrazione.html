@@ -13,6 +13,8 @@
 
 </head>
 <body>
+
+<!-- NAVBAR -->
 <nav class="uk-navbar-container uk-padding-small">
   <div class="uk-container">
     <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
@@ -88,6 +90,7 @@
     </ul>
   </div>
 </div>
+
 <header class="uk-container">
   <div class="uk-container uk-flex uk-flex-center uk-flex-middle" uk-grid>
     <!-- Logo SVG -->
@@ -143,10 +146,16 @@
     </div>
   </div>
 </header>
+
+
 <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-medium-top">
   <div class="form-container uk-width-1-3@m uk-width-1-2@s uk-padding sapp-angle sapp-shadow">
 
     <h2 class="uk-heading-line uk-text-left sapp-font"><span>Registrazione</span></h2>
+
+
+    <!--FORM DI REGISTRAZIONE -->
+
     <form class="uk-form-stacked" th:object="${utente}" method="post" enctype="multipart/form-data">
 
       <!-- Nome e Cognome affiancati -->
@@ -155,33 +164,42 @@
           <label class="uk-form-label sapp-font" for="nome">Nome</label>
           <div class="uk-form-controls">
             <input class="uk-input sapp-font-light sapp-angle" id="nome" th:field="*{nome}" type="text" placeholder="Inserisci il tuo nome" required>
+            <!-- Campo Nome -->
+            <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Errore nel nome</div>
           </div>
         </div>
         <div>
           <label class="uk-form-label sapp-font" for="cognome">Cognome</label>
           <div class="uk-form-controls">
             <input class="uk-input sapp-font-light sapp-angle" id="cognome" th:field="*{cognome}" type="text" placeholder="Inserisci il tuo cognome" required>
+            <!-- Campo Cognome -->
+            <div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}">Errore nel cognome</div>
           </div>
         </div>
       </div>
 
-      <!-- Username e Email affiancati -->
+      <!-- Username e password affiancati -->
       <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
         <div>
           <label class="uk-form-label sapp-font" for="username">Username</label>
           <div class="uk-form-controls">
             <input class="uk-input sapp-font-light sapp-angle" id="username" th:field="*{username}" type="text" placeholder="Inserisci il tuo nickname" required>
+            <!-- Campo Username -->
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Errore nell'username</div>
           </div>
         </div>
         <div>
           <label class="uk-form-label sapp-font" for="password">Password</label>
           <div class="uk-form-controls">
             <input class="uk-input sapp-font-light sapp-angle" id="password" th:field="*{password}" type="password" placeholder="Inserisci una password" required>
+            <!-- password -->
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Errore nella password</div>
+            <div th:if="${passwordError}" th:text="${passwordError}"></div>
           </div>
         </div>
       </div>
 
-      <!-- Password e Conferma Password affiancati -->
+      <!-- email e Conferma Password affiancati -->
       <div class="uk-child-width-1-2@s uk-grid-small" uk-grid>
         <div>
           <label class="uk-form-label sapp-font" for="email">Email</label>
@@ -196,7 +214,7 @@
           </div>
         </div>
       </div>
-      <!-- Password e Conferma Password affiancati -->
+      <!-- metodo pagamento-->
       <div class="uk-child-width-1-1@s uk-grid-small" uk-grid>
         <div>
           <label class="uk-form-label sapp-font" for="pagamento">Metodo di pagamento</label>
@@ -217,17 +235,21 @@
         <div class="uk-width-2-3@s">
           <label class="uk-form-label sapp-font" for="birthdate">Data di Nascita</label>
           <div class="uk-form-controls">
-            <input class="uk-input sapp-font-light sapp-angle" th:field="*{dataNascita}" id="birthdate" type="date" required>
+            <input class="uk-input sapp-font-light sapp-angle" th:field="*{dataNascita}" id="birthdate" type="date">
+
+            <!-- data di nnascita
+            <div th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}">Errore nella data di nascita</div>-->
+
           </div>
         </div>
 
-        <div class="uk-width-1-3@s">
+        <!--<div class="uk-width-1-3@s">
           <label class="uk-form-label sapp-font" for="foto">Immagine Profilo</label>
           <div class="uk-form-controls" uk-form-custom="target: true">
-            <input type="file" id="foto" aria-label="Seleziona immagine del profilo" name="foto" required>
+            <input type="file" id="foto" aria-label="Seleziona immagine del profilo" name="foto">
             <input class="uk-input uk-width-1-1 sapp-font-light sapp-angle" type="text" placeholder="Seleziona file" aria-label="Seleziona immagine" disabled>
           </div>
-        </div>
+        </div>-->
       </div>
       <!-- Submit Button -->
       <div class="uk-margin">

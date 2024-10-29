@@ -1,6 +1,7 @@
 package com.example.sapply.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,18 +16,27 @@ public class Utente {
     private int id;
 
     @Column
+    @NotBlank(message = "Il nome è obbligatorio")
+    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+$", message = "Il nome può contenere solo lettere")
     private String nome;
 
     @Column
+    @NotBlank(message = "Il cognome è obbligatorio")
+    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+$", message = "Il cognome può contenere solo lettere")
     private String cognome;
 
     @Column
+    @NotBlank(message = "L'email è obbligatoria")
+    @Email(message = "Inserisci un'email valida")
     private String email;
 
     @Column
+    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+$", message = "Username può contenere solo lettere")
     private String username;
 
     @Column
+    @NotBlank(message = "La password è obbligatoria")
+    @Size(min = 8, message = "La password deve contenere almeno 8 caratteri, un simbolo e un numero")
     private String password;
 
     @Column(name= "metodo_pagamento")
@@ -36,6 +46,7 @@ public class Utente {
     private String fotoCodificata;
 
     @Column(name = "data_di_nascita")
+    @Past(message = "La data di nascita deve essere nel passato")
     private LocalDate dataNascita;
 
     @Column(name = "data_iscrizione")

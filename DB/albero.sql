@@ -2,10 +2,17 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< Updated upstream
 -- Host: 127.0.0.1
 -- Creato il: Ott 29, 2024 alle 11:11
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
+=======
+-- Host: localhost
+-- Creato il: Ott 28, 2024 alle 16:06
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.0.28
+>>>>>>> Stashed changes
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,9 +69,9 @@ INSERT INTO `albero` (`id`, `nome_albero`, `specie`, `descrizione`, `continente`
 (15, 'Castagno europeo', 'Castanea sativa', 'Produttore di castagne, diffuso nelle regioni collinari.', 'Europa', 'Italia', 50.00, 'albero_15.jpg', 60.00, 'Generosità e abbondanza.'),
 (16, 'Sequoia gigante', 'Sequoiadendron giganteum', 'Albero tra i più alti e longevi del mondo, può superare i 90 metri.', 'America', 'USA', 150.00, 'albero_16.jpg', 250.00, 'Eternità e grandezza.'),
 (17, 'Pino ponderosa', 'Pinus ponderosa', 'Riconoscibile dalla corteccia squamosa giallastra, cresce in aree montuose.', 'America', 'USA', 45.00, 'albero_17.jpg', 60.00, 'Sopravvivenza e adattamento.'),
-(18, 'Cipresso calvo', 'Taxodium distichum', 'Albero che cresce in zone umide con radici aeree che emergono dal suolo.', ' America', 'USA', 35.00, 'albero_18.jpg', 55.00, 'Rigenerazione e resilienza.'),
-(19, 'Jacaranda', 'Jacaranda mimosifolia', 'Apprezzato per i suoi fiori viola che ricoprono l\'albero in primavera.', ' America', 'Argentina', 30.00, 'albero_19.jpg', 50.00, 'Creatività e bellezza.'),
-(20, 'Palo santo', 'Bursera graveolens', 'Albero noto per il suo legno aromatico, spesso utilizzato in rituali spirituali.', ' America', 'Ecuador', 30.00, 'albero_20.jpg', 35.00, 'Purificazione e guarigione.'),
+(18, 'Cipresso calvo', 'Taxodium distichum', 'Albero che cresce in zone umide con radici aeree che emergono dal suolo.', 'America', 'USA', 35.00, 'albero_18.jpg', 55.00, 'Rigenerazione e resilienza.'),
+(19, 'Jacaranda', 'Jacaranda mimosifolia', 'Apprezzato per i suoi fiori viola che ricoprono l\'albero in primavera.', 'America', 'Argentina', 30.00, 'albero_19.jpg', 50.00, 'Creatività e bellezza.'),
+(20, 'Palo santo', 'Bursera graveolens', 'Albero noto per il suo legno aromatico, spesso utilizzato in rituali spirituali.', 'America', 'Ecuador', 30.00, 'albero_20.jpg', 35.00, 'Purificazione e guarigione.'),
 (21, 'Eucalipto', 'Eucalyptus globulus', 'Albero dominante in Australia, noto per l\'olio essenziale e il nutrimento per i koala.', 'Oceania', 'Australia', 25.00, 'albero_21.jpg', 50.00, 'Guarigione e protezione.'),
 (22, 'Pohutukawa', 'Metrosideros excelsa', 'Albero simbolo del Natale in Nuova Zelanda, noto per i fiori rossi vibranti.', 'Oceania', 'Nuova Zelanda', 40.00, 'albero_22.jpg', 60.00, 'Festa e vitalità.'),
 (23, 'Kauri', 'Agathis australis', 'Albero massiccio e longevo, noto per il legno di qualità superiore.', 'Oceania', 'Nuova Zelanda', 60.00, 'albero_23.jpg', 80.00, 'Stabilità e antichità.'),

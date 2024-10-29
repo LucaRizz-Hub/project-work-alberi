@@ -13,4 +13,6 @@ public interface UtenteService {
     boolean controlloUsername(String username);
 
 
+    //controllo form registrazione della password
+    boolean isPasswordSicura(String password);
 }

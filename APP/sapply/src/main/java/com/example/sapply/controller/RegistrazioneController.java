@@ -24,7 +24,7 @@ public class RegistrazioneController {
     private AlberoService alberoService;
 
     @GetMapping
-    public String getPage(Model model){
+    public String getPage(Model model) {
         Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
         model.addAttribute("alberiPerContinente", alberiPerContinente);
         Utente utente = new Utente();
@@ -34,20 +34,27 @@ public class RegistrazioneController {
 
     @PostMapping
     public String formManager(
-            @Valid @ModelAttribute("utente") Utente utente,
+            @Valid @ModelAttribute("utente") Utente utente,BindingResult result,
             @RequestParam(name = "foto", required = false) MultipartFile foto,
-            BindingResult result,
+
             Model model
     ) {
         if (result.hasErrors()) {
             return "registrazione";
         }
+
         if (!utenteService.controlloUsername(utente.getUsername())) {
-            model.addAttribute("duplicato", "username già in uso");
+            model.addAttribute("duplicato", "Username già in uso");
             return "registrazione";
         }
+
+        // Controlla che la password rispetti i requisiti di sicurezza
+        if (!utenteService.isPasswordSicura(utente.getPassword())) {
+            model.addAttribute("passwordError", "La password deve contenere almeno 8 caratteri, un numero e un carattere speciale");
+            return "registrazione";
+        }
+
         utenteService.registrazioneUtente(utente, foto);
         return "redirect:/login";
     }
-
 }
