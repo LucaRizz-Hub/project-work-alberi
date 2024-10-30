@@ -207,12 +207,10 @@
 </header>
 <div class="uk-container uk-margin-large-top">
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin sapp-angle sapp-shadow" uk-grid>
-
         <!-- Immagine dell'albero -->
         <div class="uk-card-media-left uk-cover-container sapp-angle-images ">
-            <img th:src="@{'images/' + ${albero.foto}}" th:alt="${albero.foto}" uk-cover/>
+            <img class="uk-cover" th:src="@{'images/' + ${albero.foto}}" th:alt="${albero.foto}" uk-cover/>
         </div>
-
         <!-- Dettagli dell'albero e Form -->
         <div>
             <div class="uk-card-body">
@@ -222,7 +220,7 @@
                     <li><strong>Continente:</strong> <span  th:text="${albero.continente}">Continente</span></li>
                     <li><strong>Paese:</strong> <span th:text="${albero.paese}">Paese</span></li>
                     <li><strong>Prezzo:</strong> €<span id="prezzoUnitario" th:text="${#numbers.formatDecimal(albero.prezzo, 0, 'POINT', 2, 'COMMA')}">Prezzo</span>/anno</li>
-                    <li><strong>CO₂ Compensata:</strong> <span th:text="${albero.co2}">CO₂</span></li>
+                    <li><strong>CO₂ Compensata per Albero:</strong> <span th:text="${albero.co2}">CO₂</span></li>
                     <li><strong>Significato:</strong> <span th:text="${albero.significato}">Significato</span></li>
                 </ul>
                 <p th:text="${albero.descrizione}" class="uk-text-justify sapp-fnt">Descrizione dell'albero.</p>

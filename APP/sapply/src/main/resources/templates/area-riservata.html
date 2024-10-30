@@ -185,77 +185,101 @@
 
   </div>
 </header>
-<div class="uk-container uk-margin-medium-top">
-  <!-- User Information -->
-  <div class="uk-width-1-3 uk-align-left uk-margin-top sapp-fnt">
-  <div class="uk-flex uk-flex-left uk-margin-medium">
-    <!-- Profile Photo -->
-    <div>
+<div class="uk-container uk-margin-large-top">
+
+
+  <!-- User Details in Columns -->
+  <div class="uk-grid-column-small uk-child-width-1-4@s uk-flex-middle uk-text-left sapp-fnt sapp-angle sapp-shadow" uk-grid>
+    <!-- Profile Photo and Username Centered Inline -->
+    <div class="">
       <img th:src="@{${utente.fotoCodificata == null ? 'markerImage.png' : utente.fotoCodificata}}"
-           class="uk-border-circle" width="60" height="60" alt="Foto utente">
+           class="uk-border-circle uk-inline uk-margin-medium-right" width="80" height="80" alt="Foto utente">
+      <h2 class="uk-inline uk-margin-medium-bottom" th:text="${utente.username}">Username</h2>
     </div>
-    <!-- Username and Logout -->
-    <div class="uk-margin-left">
-      <h2 class="uk-margin-remove" th:text="${utente.username}">Username</h2>
+    <!-- Column 1: Nome and Cognome -->
+    <div>
+      <p><strong>Nome:</strong> <span th:text="${utente.nome}">Nome</span></p>
+      <p><strong>Cognome:</strong> <span th:text="${utente.cognome}">Cognome</span></p>
+    </div>
+
+    <!-- Column 2: Email and Password -->
+    <div>
+      <p><strong>Email:</strong> <span th:text="${utente.email}">Email</span></p>
+      <p>
+        <strong>Password:</strong>
+        <span th:text="${utente.password}" id="passwordField" class="uk-hidden">******</span>
+        <button type="button" class="uk-button uk-button-text uk-text-primary uk-margin-small-left" onclick="togglePassword()">Mostra</button>
+      </p>
+    </div>
+
+    <!-- Column 3: Data di Nascita and Data di Iscrizione -->
+    <div>
+      <p><strong>Data di nascita:</strong> <span th:text="${utente.dataNascita}">Data di Nascita</span></p>
+      <p><strong>Data di iscrizione:</strong> <span th:text="${utente.dataIscrizione}">Data di Iscrizione</span></p>
     </div>
   </div>
+</div>
 
-
-    <p><strong>Nome:</strong> <span th:text="${utente.nome}"></span></p>
-    <p><strong>Cognome:</strong> <span th:text="${utente.cognome}"></span></p>
-    <p><strong>Username:</strong> <span th:text="${utente.username}"></span></p>
-    <p><strong>Password:</strong>
-      <span th:text="${utente.password}" id="passwordField" class="uk-hidden">******</span>
-      <button type="button" class="uk-button uk-button-default uk-button-small" onclick="togglePassword()">Mostra</button>
-    </p>
-    <p><strong>Email:</strong> <span th:text="${utente.email}"></span></p>
-    <p><strong>Metodo di pagamento:</strong> <span th:text="${utente.metodoPagamento}"></span></p>
-    <p><strong>Data di nascita:</strong> <span th:text="${utente.dataNascita}"></span></p>
-    <p><strong>Data di iscrizione:</strong> <span th:text="${utente.dataIscrizione}"></span></p>
-  </div>
-
-  <!-- JavaScript for Show/Hide Password -->
-  <script>
-    function togglePassword() {
-      const passwordField = document.getElementById("passwordField");
-      passwordField.classList.toggle("uk-hidden");
-    }
-  </script>
+<!-- JavaScript to Toggle Password Visibility -->
+<script>
+  function togglePassword() {
+    const passwordField = document.getElementById("passwordField");
+    passwordField.classList.toggle("uk-hidden");
+  }
+</script>
 
   <!-- User Reviews -->
   <h3 class="uk-heading">Le tue adozioni</h3>
+<div class="uk-container uk-margin-large-top">
+  <ul uk-sortable="handle: .uk-sortable-handle" class="uk-grid uk-child-width-1-1@s uk-child-width-1-2@m uk-margin">
+    <li th:each="adozione : ${adozioni}" class="uk-margin-bottom">
+      <div class="uk-card uk-card-default uk-grid-collapse sapp-angle sapp-shadow" uk-grid>
 
-  <div th:if="${adozioni.size() > 0}" class="uk-grid uk-margin">
-    <div th:each="adozione : ${adozioni}">
-      <div class="uk-card uk-card-default sapp-font sapp-angle sapp-shadow" uk-grid>
+        <!-- Maniglia per il drag-and-drop fuori dall'immagine -->
+        <div class="uk-sortable-handle uk-background-muted uk-flex uk-flex-center uk-flex-middle" style="width: 20px; cursor: move;">
+          <span uk-icon="icon: move; ratio: 0.8"></span>
+        </div>
+
+        <!-- Immagine dell'albero -->
         <div class="uk-card-media-left uk-cover-container">
-          <img th:src="@{'images/'+${adozione.albero.foto}}" alt="Immagine albero" style="width:100%; height:auto;" uk-cover>
+          <img th:src="@{'images/' + ${adozione.albero.foto}}" alt="Immagine albero" uk-cover>
+          <canvas width="150" height="150"></canvas>
         </div>
-        <div class="uk-card-body">
-          <h3 class="uk-card-title">Albero: <span th:text="${adozione.albero.specie}"></span></h3>
-          <p><strong>Quantità:</strong> <span th:text="${adozione.quantita}"></span></p>
-          <p><strong>Data di adozione:</strong> <span th:text="${adozione.dataAdozione}"></span></p>
-          <p><strong>Costo Totale:</strong> <span th:text="${adozione.costoTotale} + '€/anno'"></span></p>
 
-          <hr class="uk-divider-small">
+        <!-- Dettagli adozione -->
+        <div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">Albero: <span th:text="${adozione.albero.specie}"></span></h3>
+            <p><strong>Quantità:</strong> <span th:text="${adozione.quantita}"></span></p>
+            <p><strong>Data di adozione:</strong> <span th:text="${adozione.dataAdozione}"></span></p>
+            <p><strong>Costo Totale:</strong> <span th:text="${adozione.costoTotale} + '€/anno'"></span></p>
 
-          <!-- Review -->
-          <div th:if="${recensioniMap[adozione.id] == null}">
-            <a th:href="@{/recensione/crea(idAdozione=${adozione.id})}" class="uk-button uk-button-text uk-text-primary">Lascia una recensione</a>
-          </div>
-          <div th:if="${recensioniMap[adozione.id] != null}">
-            <p><strong>La tua recensione:</strong> <span th:text="${recensioniMap[adozione.id].commento}"></span></p>
-            <p><strong>Valutazione:</strong> <span th:text="${recensioniMap[adozione.id].valutazione}"></span></p>
+            <hr class="uk-divider-small">
+
+            <!-- Recensioni -->
+            <div th:if="${recensioniMap[adozione.id] == null}">
+              <a th:href="@{/recensione/crea(idAdozione=${adozione.id})}" class="uk-button uk-button-text uk-text-primary">Lascia una recensione</a>
+            </div>
+            <div th:if="${recensioniMap[adozione.id] != null}">
+              <p><strong>La tua recensione:</strong> <span th:text="${recensioniMap[adozione.id].commento}"></span></p>
+              <p><strong>Valutazione:</strong>
+                <span th:each="leaf : ${#numbers.sequence(1, recensioniMap[adozione.id].valutazione)}">
+                                    <span uk-icon="icon: leaf; ratio: 0.8"></span>
+                                </span>
+              </p>
+            </div>
           </div>
         </div>
+
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
+</div>
 
-  <div th:if="${adozioni.size() == 0}" class="uk-alert-warning uk-margin-top" uk-alert>
+
+<div th:if="${adozioni.size() == 0}" class="uk-alert-warning uk-margin-top" uk-alert>
     <p>Non hai ancora adottato alberi. Esplora i nostri alberi disponibili e inizia subito la tua prima adozione!</p>
   </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
