@@ -242,8 +242,6 @@
                                 th:if="${utente != null}"
                                 class="uk-button uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
                                 uk-toggle="target: #modal-conferma">Conferma Adozione</button>
-
-
                     </div>
                 </form>
                 <!-- Bottone di login per utenti non autenticati -->
@@ -264,7 +262,6 @@
             <p class="uk-text-left">Quantità: <span id="modal-quantita"></span> albero/i</p>
             <p class="uk-text-left">Prezzo Totale: €<span id="modal-prezzo-totale"></span></p>
             <div class="uk-text-right">
-                <button class="uk-button sapp-btn sapp-asia" type="button">Annulla</button>
                 <button class="uk-button sapp-btn sapp-green" id="modal-submit" type="button">Conferma e Paga</button>
             </div>
         </div>
@@ -287,37 +284,42 @@
         </div>
     </div>
 
-    <script>
-        const bottone = document.getElementById("bottoneConferma");
-        const modalQuantita = document.getElementById("modal-quantita");
-        const modalPrezzoTotale = document.getElementById("modal-prezzo-totale");
-        const modalSubmit = document.getElementById("modal-submit");
-        const prezzoUnitario = parseFloat(document.getElementById("prezzoUnitario").textContent.replace(',', '.'));
+<script>
+    const bottone = document.getElementById("bottoneConferma");
+    const modalQuantita = document.getElementById("modal-quantita");
+    const modalPrezzoTotale = document.getElementById("modal-prezzo-totale");
+    const modalSubmit = document.getElementById("modal-submit");
+    const prezzoUnitario = parseFloat(document.getElementById("prezzoUnitario").textContent.replace(',', '.'));
 
-        bottone.addEventListener("click", () => {
-            // Ottieni la quantità e calcola il prezzo totale
-            const quantita = parseInt(document.getElementById("quantita").value) || 1;
-            const prezzoTotale = (prezzoUnitario * quantita).toFixed(2);
+    bottone.addEventListener("click", () => {
+        // Ottieni la quantità e calcola il prezzo totale
+        const quantita = parseInt(document.getElementById("quantita").value) || 1;
+        const prezzoTotale = (prezzoUnitario * quantita).toFixed(2);
 
-            // Aggiorna il contenuto del modal
-            modalQuantita.textContent = quantita;
-            modalPrezzoTotale.textContent = prezzoTotale.replace('.', ',');
-        });
+        // Aggiorna il contenuto del modal
+        modalQuantita.textContent = quantita;
+        modalPrezzoTotale.textContent = prezzoTotale.replace('.', ',');
+    });
 
-        modalSubmit.addEventListener("click", () => {
-            // Apri il modal di pagamento simulato
-            UIkit.modal("#modal-pagamento").show();
+    modalSubmit.addEventListener("click", () => {
+        // Apri il modal di pagamento simulato
+        UIkit.modal("#modal-pagamento").show();
 
-            // Simula un ritardo di pagamento di 2 secondi
-            setTimeout(() => {
-                // Chiudi il modal di pagamento
-                UIkit.modal("#modal-pagamento").hide();
+        // Simula un ritardo di pagamento di 2 secondi
+        setTimeout(() => {
+            // Chiudi il modal di pagamento
+            UIkit.modal("#modal-pagamento").hide();
 
-                // Mostra il modal di conferma pagamento
-                UIkit.modal("#modal-confermato").show();
-            }, 2000);
-        });
-    </script>
+            // Mostra il modal di conferma pagamento
+            UIkit.modal("#modal-confermato").show();
+        }, 3000);
+        setTimeout(() => {
+            // Invia il form quando si apre il modal di conferma
+            document.getElementById("formAdozione").submit();
+        }, 6000);
+
+    });
+</script>
 
 <div class="uk-container uk-margin-small-top">
     <div th:if="${recensioni.size() > 0}" class="uk-comment-list uk-margin-small-top">
