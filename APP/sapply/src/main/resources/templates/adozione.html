@@ -209,22 +209,21 @@
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin sapp-angle sapp-shadow" uk-grid>
 
         <!-- Immagine dell'albero -->
-        <div class="uk-card-media-left uk-cover-container sapp-angle-images">
-            <img class="uk-cover uk-animation-reverse uk-transform-origin-top-center uk-animation-kenburns" th:src="@{'images/' + ${albero.foto}}" th:alt="${albero.foto}">
+        <div class="uk-card-media-left uk-cover-container sapp-angle-images ">
+            <img th:src="@{'images/' + ${albero.foto}}" th:alt="${albero.foto}" uk-cover/>
         </div>
 
         <!-- Dettagli dell'albero e Form -->
         <div>
             <div class="uk-card-body">
-                <h2 class="uk-card-title sapp-font uk-margin-small-bottom" th:text="${albero.nomeAlbero}">Nome Albero</h2>
+                <h2 class="uk-card-title sapp-font uk-margin-medium-bottom" th:text="${albero.nomeAlbero}">Nome Albero</h2>
                 <ul class="uk-list uk-list-divider sapp-fnt">
-                    <li><strong>Specie:</strong> <span class="sapp-fnt" th:text="${albero.specie}">Specie</span></li>
-                    <li><strong>Continente:</strong> <span class="sapp-fnt" th:text="${albero.continente}">Continente</span></li>
-                    <li><strong>Paese:</strong> <span class="sapp-fnt" th:text="${albero.paese}">Paese</span></li>
-                    <li><strong>Prezzo:</strong> €<span class="sapp-fnt" id="prezzoUnitario" th:text="${#numbers.formatDecimal(albero.prezzo, 0, 'POINT', 2, 'COMMA')}">Prezzo</span>/anno</li>
-                    <li><strong>CO₂ Compensata:</strong> <span class="sapp-fnt" th:text="${albero.co2}">CO₂</span></li>
-                    <li><strong>Significato:</strong> <span class="sapp-fnt" th:text="${albero.significato}">Significato</span></li>
-                    <li></li>
+                    <li><strong>Specie:</strong> <span th:text="${albero.specie}">Specie</span></li>
+                    <li><strong>Continente:</strong> <span  th:text="${albero.continente}">Continente</span></li>
+                    <li><strong>Paese:</strong> <span th:text="${albero.paese}">Paese</span></li>
+                    <li><strong>Prezzo:</strong> €<span id="prezzoUnitario" th:text="${#numbers.formatDecimal(albero.prezzo, 0, 'POINT', 2, 'COMMA')}">Prezzo</span>/anno</li>
+                    <li><strong>CO₂ Compensata:</strong> <span th:text="${albero.co2}">CO₂</span></li>
+                    <li><strong>Significato:</strong> <span th:text="${albero.significato}">Significato</span></li>
                 </ul>
                 <p th:text="${albero.descrizione}" class="uk-text-justify sapp-fnt">Descrizione dell'albero.</p>
 
@@ -232,40 +231,48 @@
                 <form id="formAdozione" th:action="@{/adozione/conferma}" method="post" class="uk-form-stacked uk-margin-top">
                     <input type="hidden" name="alberoId" th:value="${albero.id}">
 
-                    <label class="uk-form-label sapp-font" for="quantita">Quantità:</label>
+                    <label class="uk-form-label sapp-fnt" for="quantita"><strong>Quantità:</strong></label>
 
-                    <!-- Container flessibile per allineare input e bottone -->
                     <div class="uk-flex uk-flex-middle">
                         <div class="uk-form-controls uk-margin-small-right">
                             <input class="uk-input uk-form-width-small sapp-angle" type="number" id="quantita" name="quantita" min="1" required>
                         </div>
+                        <!-- Bottone di conferma per utenti autenticati -->
+                        <button type="button" id="bottoneConferma"
+                                th:if="${utente != null}"
+                                class="uk-button uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom"
+                                uk-toggle="target: #modal-conferma">Conferma Adozione</button>
 
-                        <!-- Bottone di conferma allineato con l'input -->
-                        <button type="button" id="bottoneConferma" class="uk-button uk-position-bottom-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-bottom" uk-toggle="target: #modal-conferma">Conferma Adozione</button>
+
                     </div>
                 </form>
-
+                <!-- Bottone di login per utenti non autenticati -->
+                <a th:unless="${utente != null}"
+                   class="uk-button uk-position-bottom-right uk-button sapp-green sapp-font sapp-btn uk-margin-medium-right uk-margin-medium-bottom"
+                   th:href="@{/login}">Login</a>
             </div>
         </div>
     </div>
 
+</div>
+
     <!-- Modal per la conferma con UIkit -->
     <div id="modal-conferma" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-modal-dialog uk-modal-body sapp-angle sapp-shadow sapp-font">
             <h2 class="uk-modal-title">Conferma Adozione</h2>
             <p id="modal-text">Sei sicuro di voler adottare questo albero?</p>
-            <p class="uk-text-center">Quantità: <span id="modal-quantita"></span> albero/i</p>
-            <p class="uk-text-center">Prezzo Totale: €<span id="modal-prezzo-totale"></span></p>
+            <p class="uk-text-left">Quantità: <span id="modal-quantita"></span> albero/i</p>
+            <p class="uk-text-left">Prezzo Totale: €<span id="modal-prezzo-totale"></span></p>
             <div class="uk-text-right">
-                <button class="uk-button uk-button-default uk-modal-close" type="button">Annulla</button>
-                <button class="uk-button uk-button-primary" id="modal-submit" type="button">Conferma e Paga</button>
+                <button class="uk-button sapp-btn sapp-asia" type="button">Annulla</button>
+                <button class="uk-button sapp-btn sapp-green" id="modal-submit" type="button">Conferma e Paga</button>
             </div>
         </div>
     </div>
 
     <!-- Modal per la simulazione di pagamento -->
     <div id="modal-pagamento" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body uk-text-center">
+        <div class="uk-modal-dialog uk-modal-body uk-text-center sapp-angle sapp-font sapp-shadow">
             <h3>Pagamento in corso...</h3>
             <div uk-spinner></div>
         </div>
@@ -273,10 +280,10 @@
 
     <!-- Modal di conferma pagamento -->
     <div id="modal-confermato" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body uk-text-center">
+        <div class="uk-modal-dialog uk-modal-body uk-text-center sapp-angle sapp-font sapp-shadow">
             <h3>Pagamento Confermato!</h3>
             <p>Grazie di aver adottato il nostro albero.</p>
-            <button class="uk-button uk-button-primary uk-modal-close" type="button">Chiudi</button>
+            <button class="uk-button uk-button-primary uk-modal-close sapp-btn" type="button">Chiudi</button>
         </div>
     </div>
 
@@ -312,21 +319,30 @@
         });
     </script>
 
-    <!-- Sezione recensioni -->
-    <h2 class="uk-heading-line uk-margin-top"><span>Recensioni</span></h2>
-
-    <div th:if="${recensioni.size() > 0}" class="uk-comment-list uk-margin-top">
+<div class="uk-container uk-margin-small-top">
+    <div th:if="${recensioni.size() > 0}" class="uk-comment-list uk-margin-small-top">
         <ul class="uk-list">
             <li th:each="recensione : ${recensioni}">
-                <article class="uk-comment">
-                    <header class="uk-comment-header">
-                        <h4 class="uk-comment-title"><strong th:text="${recensione.adozione.utente.username}">Utente</strong></h4>
-                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                            <li><strong>Valutazione:</strong> <span th:text="${recensione.valutazione}">Valutazione</span></li>
-                            <li>Data: <span th:text="${recensione.dataRecensione}">Data</span></li>
-                        </ul>
+                <article class="uk-comment uk-padding sapp-angle sapp-shadow sapp-font">
+                    <header class="uk-comment-header uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <img class="uk-comment-avatar uk-border-circle" th:src="${recensione.adozione.utente.fotoCodificata}" width="50" height="50" alt="">
+                        </div>
+                        <div class="uk-width-expand">
+                            <h4 class="uk-comment-title uk-margin-remove"><strong th:text="${recensione.adozione.utente.username}">Utente</strong></h4>
+                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top uk-text-small">
+                                <li>
+                                    <span>
+        <span th:each="i : ${#numbers.sequence(1, recensione.valutazione)}">
+            <i class="uk-icon" uk-icon="icon: star; ratio: 0.8"></i>
+        </span>
+    </span>
+                                </li>
+                                <li>Data:&nbsp;<span th:text="${recensione.dataRecensione}">Data</span></li>
+                            </ul>
+                        </div>
                     </header>
-                    <div class="uk-comment-body">
+                    <div class="uk-comment-body uk-margin-top">
                         <p th:text="${recensione.commento}">Commento</p>
                     </div>
                 </article>
@@ -334,10 +350,9 @@
         </ul>
     </div>
 
-    <div th:if="${recensioni.size() == 0}" class="uk-alert-warning" uk-alert>
+    <div th:if="${recensioni.size() == 0}" class="uk-alert-warning sapp-angle sapp-shadow" uk-alert>
         <p>Non ci sono ancora recensioni per questo albero. Sii il primo a lasciare una recensione!</p>
     </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
