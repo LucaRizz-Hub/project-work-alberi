@@ -42,16 +42,22 @@ public class RegistrazioneController {
             Model model
     ) {
         if (result.hasErrors()) {
+            Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+            model.addAttribute("alberiPerContinente", alberiPerContinente);
             return "registrazione";
         }
 
         if (!utenteService.controlloUsername(utente.getUsername())) {
+            Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+            model.addAttribute("alberiPerContinente", alberiPerContinente);
             model.addAttribute("duplicato", "Username già in uso");
             return "registrazione";
         }
 
         // Controlla che la password rispetti i requisiti di sicurezza
         if (!utenteService.isPasswordSicura(utente.getPassword())) {
+            Map<String, List<Albero>> alberiPerContinente = alberoService.getAlberiPerContinente();
+            model.addAttribute("alberiPerContinente", alberiPerContinente);
             model.addAttribute("passwordError", "La password deve contenere almeno 8 caratteri, un numero e un carattere speciale");
             return "registrazione";
         }

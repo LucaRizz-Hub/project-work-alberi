@@ -52,23 +52,6 @@ public class Utente {
     @Column(name = "data_iscrizione")
     private LocalDate dataIscrizione;
 
-//    @OneToMany
-//            (
-//                    mappedBy = "utenti",
-//                    cascade = CascadeType.REMOVE,
-//                    fetch = FetchType.EAGER,
-//                    orphanRemoval = true
-//            )
-//    private List<Adozione> adozioni = new ArrayList<>();
-
-//    @OneToMany
-//            (
-//                    mappedBy = "utenti",
-//                    cascade = CascadeType.REMOVE,
-//                    fetch = FetchType.EAGER,
-//                    orphanRemoval = true
-//            )
-//    private List<Recensione> recensioni = new ArrayList<>();
 
     // GETTER SETTER
 
