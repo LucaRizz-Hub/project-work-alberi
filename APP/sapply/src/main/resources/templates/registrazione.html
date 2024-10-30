@@ -219,6 +219,7 @@
             <input class="uk-input sapp-font-light sapp-angle" id="username" th:field="*{username}" type="text" placeholder="Inserisci il tuo nickname" required>
             <!-- Campo Username -->
             <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Errore nell'username</div>
+            <div th:if="${duplicato != null}" th:text="${duplicato}"></div>
           </div>
         </div>
         <div>
