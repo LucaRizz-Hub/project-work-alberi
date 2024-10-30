@@ -67,6 +67,9 @@ public class AreaRiservataController {
         // mappa con recensioni associate
         model.addAttribute("recensioniMap", recensioniMap);
 
+        //non passavamo ancora utente al model???
+        model.addAttribute("utente", utente);
+
         return "area-riservata";
     }
 

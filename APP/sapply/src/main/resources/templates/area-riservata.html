@@ -177,15 +177,40 @@
 
   </div>
 </header>
-<h1>Benvenuto nell'Area Utente</h1>
+
+<h1 th:text="'Benvenuto ' + ${utente.username}"></h1>
 <h2>Cosa vuole fare oggi?</h2>
-<ul>
-  <a th:href="@{/}"><li>Adotta un albero 🌲 (torna alla homepage)</li></a>
-  <a th:href="@{/profiloutente}"><li>Visualizza il tuo profilo 👥</li></a>
-  <a th:href="@{/areariservata/logout}"><li>Esci dall'account 🚪</li></a>
-</ul>
+
+<div id="quadroFoto">
+  <img th:src="@{${utente.fotoCodificata == null ? 'markerImage.png' : utente.fotoCodificata}}">
+</div>
+
+<table>
+  <tr>
+    <td><strong>Nome: </strong> <span th:text="${utente.nome}"></span></td>
+    <td><strong>Cognome: </strong> <span th:text="${utente.cognome}"></span></td>
+  </tr>
+  <tr>
+
+    <td><strong>Username: </strong> <span th:text="${utente.username}"></span></td>
+    <td><strong>Password: </strong> <span th:text="${utente.password}"></span></td>
+  </tr>
+  <tr>
+    <td><strong>Email: </strong> <span th:text="${utente.email}"></span></td>
+    <td><strong>Metodo di pagamento: </strong> <span th:text="${utente.metodoPagamento}"></span></td>
+  </tr>
+
+  <tr>
+    <td><strong>Data di nascita: </strong> <span th:text="${utente.dataNascita}"></span></td>
+    <td><strong>Data di iscrizione: </strong> <span th:text="${utente.dataIscrizione}"></span></td>
+  </tr>
+</table>
+
+<a th:href="@{/areariservata/logout}">Esci dall'account 🚪</a>
 
 <br>
+<h3>Le tue recensioni: </h3>
+
 <div th:if="${adozioni.size() > 0}">
   <ul>
     <li th:each="adozione : ${adozioni}">
