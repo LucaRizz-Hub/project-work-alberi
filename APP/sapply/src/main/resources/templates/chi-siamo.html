@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi siamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/stile.css"/>
+</head>
+<body>
+<nav class="uk-navbar-container uk-padding-small">
+    <div class="uk-container">
+        <div uk-navbar="dropbar: true; dropbar-anchor: !.uk-navbar-container; target-y: !.uk-navbar-container">
+            <!-- Navbar per schermi medi o più grandi -->
+            <div class="uk-navbar-left uk-visible@m">
+                <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/alberi}">Tutti gli alberi</a>
+            </div>
+            <div class="uk-navbar-left uk-visible@m">
+                <ul class="uk-navbar-nav">
+                    <!-- Itera su ogni continente -->
+                    <div th:each="continente : ${alberiPerContinente}">
+                        <li>
+                            <!-- Pulsante per il continente -->
+                            <div class="uk-inline uk-margin-small-left">
+                                <button class="uk-button sapp-btn-light sapp-shadow"
+                                        th:classappend="'sapp-' + ${continente.key.toLowerCase()}"
+                                        type="button"
+                                        th:text="${continente.key}"> <!-- Nome del continente -->
+                                </button>
+                                <!-- Dropdown degli alberi del continente -->
+                                <div class="sapp-angle sapp-shadow" uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <!-- Itera su ogni albero nel continente -->
+                                        <li th:each="albero : ${continente.value}">
+                                            <a th:href="@{/adozione(id=${albero.id})}" th:text="${albero.nomeAlbero}"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+
+            <!-- Icona Offcanvas per dispositivi più piccoli di tablet -->
+            <div class="uk-navbar-left uk-hidden@m">
+                <a class="uk-navbar-toggle" href="#offcanvas-menu" uk-toggle>
+                    <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+                </a>
+            </div>
+
+            <!-- Login e Registrazione oppure Area Utente quando loggato -->
+            <div class="uk-navbar-right">
+                <div th:if="${utente != null}">
+                    <!-- Messaggio di benvenuto con username e immagine profilo -->
+                    <span class="sapp-font-light-reg uk-visible@m">Ciao, </span><span class="sapp-font uk-margin-small-right uk-visible@m" th:text="${utente.username}"></span>
+                    <img th:src="@{${utente.fotoCodificata == null ? 'images/noUtente.jpg' : utente.fotoCodificata}}" class="uk-border-circle uk-margin-medium-right uk-visible@m" alt="Profile Picture" width="50" height="50">
+                    <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m" th:href="@{/areariservata}">Area Utente</a>
+                </div>
+                <div th:if="${utente == null}">
+                    <a class="uk-button sapp-btn sapp-green sapp-shadow uk-visible@m uk-margin-medium-right" th:href="@{/login}">Login</a>
+                    <a class="uk-button sapp-btn sapp-blue sapp-shadow uk-visible@m" th:href="@{/registrazione}">Registrati</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<h1 class="uk-text-center">Il team di Sapply</h1>
+
+<footer class="uk-text-center uk-padding uk-background-muted uk-margin">
+    <div class="uk-container">
+        <img src="path/to/your/logo.png" alt="Logo" class="uk-margin-small-top" width="100" height="auto">
+        <p class="uk-text-large">Una creazione JAITA128</p>
+        <a th:href="@{/chisiamo}">Chi siamo</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>
