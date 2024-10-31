@@ -87,11 +87,11 @@ public class AreaRiservataController {
                                   @RequestParam String commento,
                                   @RequestParam int valutazione){
         // Recupera l'adozione per associalre la recensione
-        Adozione adozione = adozioneService.datiAdozione(idAdozione);
+        Adozione adozioneRecensita = adozioneService.datiAdozione(idAdozione);
 
         // crea e salva la nuova recensione
         Recensione recensione = new Recensione();
-        recensione.setAdozione(adozione);
+        recensione.setAdozione(adozioneRecensita);
         recensione.setCommento(commento);
         recensione.setValutazione(valutazione);
         recensione.setDataRecensione(LocalDate.now());
