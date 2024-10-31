@@ -257,16 +257,15 @@
             <p><span th:text="${adozione.albero.specie}"></span></p>
             <p><strong>Quantità:</strong> <span th:text="${adozione.quantita}"></span></p>
             <p><strong>Data di adozione:</strong> <span th:text="${adozione.dataAdozione}"></span></p>
+            <p class="uk-hidden" th:text="${adozione.id}"></p>
             <p><strong>Costo Totale:</strong> <span th:text="${adozione.costoTotale} + '€/anno'"></span></p>
 
             <hr class="uk-divider-small">
 
             <!-- Recensioni -->
             <div th:if="${recensioniMap[adozione.id] == null}">
-              <a href="#modal-crea-recensione" uk-toggle class="uk-button sapp-btn sapp-blue sapp-shadow">Lascia una recensione</a>
+              <a href="#modal-crea-recensione" uk-toggle class="uk-button sapp-btn sapp-blue sapp-shadow" th:data-id="${adozione.id}" th:data-specie="${adozione.albero.specie}"  >Lascia una recensione</a>
             </div>
-
-
             <div>
               <a th:href="@{/adozione(id=${adozione.albero.id})}" class="uk-button uk-position-top-right uk-button sapp-font sapp-btn sapp-green sapp-shadow uk-margin-medium-right uk-margin-medium-top">Dettaglio</a>
             </div>
@@ -274,46 +273,70 @@
               <p><strong>La tua recensione:</strong><br><span th:text="${recensioniMap[adozione.id].commento}"></span></p>
               <p><strong>Valutazione:</strong><br>
                 <span th:each="leaf : ${#numbers.sequence(1, recensioniMap[adozione.id].valutazione)}">
-                                    <span uk-icon="icon: star; ratio: 0.8"></span>
-                                </span>
+                 <span uk-icon="icon: star; ratio: 0.8"></span>
+                </span>
               </p>
             </div>
           </div>
         </div>
 
       </div>
-      <div id="modal-crea-recensione" class="uk-flex-top" uk-modal>
-        <div class="uk-modal-dialog uk-margin-auto-vertical">
-
-          <button class="uk-modal-close-default" type="button" uk-close></button>
-
-          <div class="uk-modal-header">
-            <h2 class="uk-modal-title">Lascia una Recensione</h2>
-          </div>
-
-          <div class="uk-modal-body">
-            <p>Stai lasciando una recensione per l'adozione di <span th:text="${adozione.albero.specie}"></span></p>
-
-            <form th:action="@{areariservata/salva}" method="post">
-              <input type="hidden" name="idAdozione" th:value="${adozione.id}">
-              <label for="commento">Recensione:</label><br>
-              <textarea id="commento" name="commento" required></textarea><br>
-              <label for="valutazione">Valutazione (1-5):</label>
-              <input type="number" id="valutazione" name="valutazione" min="1" max="5" required><br>
-              <button type="submit" class="uk-button uk-button-primary">Invia Recensione</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
-
     </li>
   </ul>
 </div>
 
+<footer class="uk-text-center uk-padding uk-background-muted">
+  <div class="uk-container">
+    <p class="uk-text-large">Grazie per il supporto!</p>
+    <img src="path/to/your/logo.png" alt="Logo" class="uk-margin-small-top" width="100" height="auto">
+  </div>
+</footer>
+
+<div id="modal-crea-recensione" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical">
+
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+    <div class="uk-modal-header">
+      <h2 class="uk-modal-title">Lascia una Recensione</h2>
+    </div>
+
+    <div class="uk-modal-body">
+      <p>Stai lasciando una recensione per l'adozione di <span id="specieAlbero"></span></p>
+
+      <form th:action="@{areariservata/salva}" method="post">
+        <input type="hidden" id="adozioneId" name="idAdozione">
+        <label for="commento">Recensione:</label><br>
+        <textarea id="commento" name="commento" required></textarea><br>
+        <label for="valutazione">Valutazione (1-5):</label>
+        <input type="number" id="valutazione" name="valutazione" min="1" max="5" required><br>
+        <button class="uk-button uk-button-primary" type="submit">Invia Recensione</button>
+      </form>
+    </div>
+  </div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
+  <script>
+    document.querySelectorAll('a[href="#modal-crea-recensione"]').forEach(button => {
+      button.addEventListener('click', function () {
+        const adozioneId = this.getAttribute('data-id');
+        const specieAlbero = this.getAttribute('data-specie');
+
+        document.getElementById('adozioneId').value = adozioneId;
+        document.getElementById('specieAlbero').textContent = specieAlbero;
+      });
+    });
+
+    // Reimposta i valori quando il modal si chiude
+    UIkit.util.on('#modal-crea-recensione', 'hide', function () {
+      document.getElementById('adozioneId').value = '';
+      document.getElementById('specieAlbero').textContent = '';
+    });
+
+  </script>
 </body>
 </html>

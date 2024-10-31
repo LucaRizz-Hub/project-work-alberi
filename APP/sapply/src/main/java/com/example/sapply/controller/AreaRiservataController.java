@@ -62,6 +62,7 @@ public class AreaRiservataController {
             Recensione recensione = recensioneService.trovaRecensione(adozione.getId());
 
             if(recensione != null){
+
                 // associa l'id dell'adozione alla recensione (se esiste una recensione)
                 recensioniMap.put(adozione.getId(), recensione);
             }
