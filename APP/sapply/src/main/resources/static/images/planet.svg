@@ -4,11 +4,11 @@
   <defs>
     <style>
       .st0 {
-        fill: #fc0;
+        fill: #FFD700;
       }
 
       .st1, .st2 {
-        fill: #e84a1d;
+        fill: #FF4500;
       }
 
       .st3, .st2, .st4 {
@@ -16,15 +16,15 @@
       }
 
       .st3, .st5 {
-        fill: #564596;
+        fill: #8000FF;
       }
 
       .st4, .st6 {
-        fill: #42bbc4;
+        fill: #00CED1;
       }
 
       .st7 {
-        fill: #4563ac;
+        fill: #4169E1;
       }
     </style>
   </defs>
