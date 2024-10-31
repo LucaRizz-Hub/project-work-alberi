@@ -164,31 +164,31 @@ body {
 
 /* Americhe */
 .sapp-america {
-    background-color: #d50202; /* Verde per le Americhe */
+    background-color: #8000FF; /* Verde per le Americhe */
     color: white;
 }
 
 /* Asia */
 .sapp-asia {
-    background-color: #FF5722; /* Arancione per l'Asia */
+    background-color: #FF4500; /* Arancione per l'Asia */
     color: white;
 }
 
 /* Africa */
 .sapp-africa {
-    background-color: #FF9800; /* Giallo scuro per l'Africa */
+    background-color: #FFD700; /* Giallo scuro per l'Africa */
     color: white;
 }
 
 /* Europa */
 .sapp-europa {
-    background-color: #3F51B5; /* Blu per l'Europa */
+    background-color: #4169E1; /* Blu per l'Europa */
     color: white;
 }
 
 /* Oceania */
 .sapp-oceania {
-    background-color: #9C27B0; /* Viola per l'Oceania */
+    background-color: #00CED1; /* Viola per l'Oceania */
     color: white;
 }
 
