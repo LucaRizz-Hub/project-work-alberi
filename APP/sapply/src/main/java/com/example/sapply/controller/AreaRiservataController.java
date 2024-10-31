@@ -13,8 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,4 +82,23 @@ public class AreaRiservataController {
         return "redirect:/login";
     }
 
+    @PostMapping("/salva")
+    public String salvaRecensione(@RequestParam int idAdozione,
+                                  @RequestParam String commento,
+                                  @RequestParam int valutazione){
+        // Recupera l'adozione per associalre la recensione
+        Adozione adozione = adozioneService.datiAdozione(idAdozione);
+
+        // crea e salva la nuova recensione
+        Recensione recensione = new Recensione();
+        recensione.setAdozione(adozione);
+        recensione.setCommento(commento);
+        recensione.setValutazione(valutazione);
+        recensione.setDataRecensione(LocalDate.now());
+
+        recensioneService.salvaRecensione(recensione);
+
+        // reindirizza all'area utente dopo il salvataggio
+        return "redirect:/area-riservata";
+    }
 }
