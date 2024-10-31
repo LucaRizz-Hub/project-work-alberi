@@ -99,6 +99,6 @@ public class AreaRiservataController {
         recensioneService.salvaRecensione(recensione);
 
         // reindirizza all'area utente dopo il salvataggio
-        return "redirect:/area-riservata";
+        return "redirect:/areariservata";
     }
 }

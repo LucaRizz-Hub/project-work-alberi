@@ -295,7 +295,7 @@
             <p>Stai lasciando una recensione per l'adozione di <span th:text="${adozione.albero.specie}"></span></p>
 
             <form th:action="@{areariservata/salva}" method="post">
-              <input type="hidden" name="idAdozione" th:value="${idAdozione}">
+              <input type="hidden" name="idAdozione" th:value="${adozione.albero.id}">
               <label for="commento">Recensione:</label><br>
               <textarea id="commento" name="commento" required></textarea><br>
               <label for="valutazione">Valutazione (1-5):</label>
