@@ -34,11 +34,11 @@ public class RegistrazioneController {
         return "registrazione";
     }
 
+    // abbiamo sostituito il sistema dell base64 con 6 immagini predefinite (sottoforma di String path) - cesare
     @PostMapping
     public String formManager(
             @Valid @ModelAttribute("utente") Utente utente,BindingResult result,
-            @RequestParam(name = "foto", required = false) MultipartFile foto,
-
+            @RequestParam(name = "foto", required = false) String fotoPath,
             Model model
     ) {
         if (result.hasErrors()) {
@@ -62,7 +62,7 @@ public class RegistrazioneController {
             return "registrazione";
         }
 
-        utenteService.registrazioneUtente(utente, foto);
+        utenteService.registrazioneUtente(utente, fotoPath);
         return "redirect:/login";
     }
 }

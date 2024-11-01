@@ -225,6 +225,11 @@ body {
     max-height: 637px;
 }
 
+.sapp-avatar-icons{
+    width: 100px;
+    height: 100px;
+}
+
 #mappamondo-container {
     position: relative;
     width: 100%;

@@ -26,17 +26,25 @@ public class UtenteServiceImpl  implements UtenteService {
         return false;
     }
 
+//    @Override
+//    public void registrazioneUtente(Utente utente, MultipartFile foto) {
+//        if (foto != null && !foto.isEmpty()) {
+//            try {
+//                String formato = foto.getContentType();
+//                String fotoCodificata = "data:" + formato + ";base64," + Base64.getEncoder().encodeToString(foto.getBytes());
+//                utente.setFotoCodificata(fotoCodificata);
+//            } catch (Exception e) {
+//                e.printStackTrace();  // Log per il debug
+//            }
+//        }
+//        utenteDao.save(utente);
+//    }
+
+    // chiamo il setter della foto just in case - cesare
     @Override
-    public void registrazioneUtente(Utente utente, MultipartFile foto) {
-        if (foto != null && !foto.isEmpty()) {
-            try {
-                String formato = foto.getContentType();
-                String fotoCodificata = "data:" + formato + ";base64," + Base64.getEncoder().encodeToString(foto.getBytes());
-                utente.setFotoCodificata(fotoCodificata);
-            } catch (Exception e) {
-                e.printStackTrace();  // Log per il debug
-            }
-        }
+    public void registrazioneUtente(Utente utente, String fotoPath) {
+        Utente utenteAggiornato = utente;
+        utenteAggiornato.setFotoCodificata(fotoPath);
         utenteDao.save(utente);
     }
 

@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface UtenteService {
     boolean loginUtente(String username, String password, HttpSession session);
-    void registrazioneUtente(Utente utente, MultipartFile foto);
+    void registrazioneUtente(Utente utente, String fotoPath);
     boolean controlloUsername(String username);
 
 
