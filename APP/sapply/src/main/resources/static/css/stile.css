@@ -152,6 +152,7 @@ body {
 }
 .sapp-green{
     background-color: #499c7b;
+    /*#499c7b*/
 }
 .sapp-shadow {
     border: none;
@@ -166,13 +167,13 @@ body {
 
 /* Americhe */
 .sapp-america {
-    background-color: #8000FF; /* Verde per le Americhe */
+    background-color: #8000FF; /* Viola per le Americhe */
     color: white;
 }
 
 /* Asia */
 .sapp-asia {
-    background-color: #FF4500; /* Arancione per l'Asia */
+    background-color: #FF4500; /* rosso per l'Asia */
     color: white;
 }
 
@@ -190,7 +191,7 @@ body {
 
 /* Oceania */
 .sapp-oceania {
-    background-color: #00CED1; /* Viola per l'Oceania */
+    background-color: #00CED1; /* tuchese per l'Oceania */
     color: white;
 }
 
@@ -223,6 +224,8 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
+    background-color:white;
+
 }
 
 .albero {
@@ -232,6 +235,7 @@ body {
     background-color: green;
     border-radius: 50%;
     cursor: pointer;
+    border: 2px solid white;
 }
 
 .uk-container.uk-height-expand {
