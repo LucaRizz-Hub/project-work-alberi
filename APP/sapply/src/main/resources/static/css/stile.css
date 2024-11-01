@@ -2,7 +2,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     background-size: cover;
-    background-color: #fdfdfd;
+    background-color: transparent !important;
     background-position: center;
     background-attachment: fixed;
     margin: 0;
@@ -157,7 +157,9 @@ body {
     border: none;
     box-shadow: 0 0 0 3px rgba(4, 21, 31, 0.01); /* Ombra solida al posto del bordo */
 }
-
+.sapp-bg{
+    background-color: #fcfcfc;
+}
 .sapp-green:hover{
     background-color: #49887b;
 }
@@ -243,3 +245,29 @@ body {
 #adopt-button{
     display: none;
 }
+.bgnone{
+    background-color: transparent;
+}
+.parallax {
+    position: fixed;
+    bottom: 0;
+    width: 107%;  /* Riduzione della dimensione */
+    height: 100%; /* Riduzione della dimensione */
+    overflow: hidden;
+    z-index: -1; /* Porta lo sfondo sotto gli altri elementi */
+}
+
+
+.layer {
+    position: absolute;
+    bottom: -4%;
+    left: -4%;
+    width: 108%;
+    height: auto;
+    transition: transform 0.1s ease;
+}
+/* Cazzo è l'olio?! */
+.layer1 { transform: translateX(0);}
+.layer2 { transform: translateX(0);}
+.layer3 { transform: translateX(0);}
+.layer4 { transform: translateX(0);}

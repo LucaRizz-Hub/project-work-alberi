@@ -297,15 +297,22 @@
   </div>
 </div>
 <script src="js/planet.js"></script>
-
-<footer class="uk-text-center uk-padding uk-background-muted uk-margin">
-  <div class="uk-container">
-    <img src="path/to/your/logo.png" alt="Logo" class="uk-margin-small-top" width="100" height="auto">
-    <p class="uk-text-large">Una creazione JAITA128</p>
-    <a th:href="@{/chisiamo}">Chi siamo</a>
+<footer class="uk-margin-xlarge-top uk-width-1-1 uk-flex uk-flex-center@m uk-flex-right@l">
+  <div class="uk-width-1-6 uk-padding sapp-angle sapp-shadow sapp-bg uk-position-relative uk-margin-medium-right uk-margin-medium-bottom">
+    <img src="../images/sapplylogo.png" alt="Logo" class="uk-margin-small-bottom uk-width-3-6" height="auto">
+    <p class="uk-text-large sapp-font uk-text-right">
+      è una creazione <a th:href="@{/chisiamo}">JAITA128</a>
+    </p>
   </div>
 </footer>
 
+<div class="parallax">
+  <img src="../images/layer4.png" class="layer layer1" alt="Livello 1">
+  <img src="../images/layer3.png" class="layer layer2" alt="Livello 2">
+  <img src="../images/layer2.png" class="layer layer3" alt="Livello 3">
+  <img src="../images/layer1.png" class="layer layer4" alt="Livello 4">
+</div>
+<script th:src="@{js/parallax.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>
