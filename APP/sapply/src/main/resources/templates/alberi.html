@@ -215,7 +215,7 @@
         <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: pack">
             <!-- Itera su ogni albero del continente per generare le card -->
             <div th:each="albero : ${continente.value}">
-                <div class="uk-card uk-card-default uk-card sapp-card-border sapp-angle sapp-font" style="overflow: hidden;">
+                <div class="uk-card uk-card-default uk-card sapp-card-border sapp-angle sapp-font sapp-limit-size" style="overflow: hidden;">
                     <div class="sapp-angle-img uk-cover-container">
                         <img class="uk-cover uk-animation-kenburns" th:src="@{'images/'+${albero.foto}}" alt="Immagine Albero" th:alt="${albero.nomeAlbero}">
                     </div>

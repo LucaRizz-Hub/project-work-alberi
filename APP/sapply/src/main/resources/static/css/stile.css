@@ -219,6 +219,12 @@ body {
     border: 3px solid #f2f2f2 !important;
     box-shadow: none;
 }
+
+.sapp-limit-size{
+    min-height: 637px;
+    max-height: 637px;
+}
+
 #mappamondo-container {
     position: relative;
     width: 100%;
