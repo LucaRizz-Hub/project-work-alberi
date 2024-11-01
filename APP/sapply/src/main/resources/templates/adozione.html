@@ -106,7 +106,7 @@
         </ul>
     </div>
 </div>
-<header class="uk-container uk-margin-medium-top">
+<header class="uk-container uk-margin-medium-top bgnone">
     <div class="uk-flex uk-flex-center uk-flex-middle uk-grid-collapse" uk-grid>
 
         <!-- Logo e Scritta sempre affiancati e centrati -->
@@ -205,7 +205,8 @@
 
     </div>
 </header>
-<div class="uk-container uk-margin-large-top">
+<main class="uk-container uk-width-2-3 uk-margin-large-top bgnone">
+<div>
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin sapp-angle sapp-shadow" uk-grid>
         <!-- Immagine dell'albero -->
         <div class="uk-card-media-left uk-cover-container sapp-angle-images ">
@@ -319,11 +320,11 @@
     });
 </script>
 
-<div class="uk-container uk-margin-small-top">
+<div class="uk-container uk-width-1-1 uk-margin-small-top">
     <div th:if="${recensioni.size() > 0}" class="uk-comment-list uk-margin-small-top">
         <ul class="uk-list">
             <li th:each="recensione : ${recensioni}">
-                <article class="uk-comment uk-padding sapp-angle sapp-shadow sapp-font">
+                <article class="uk-comment uk-padding sapp-angle sapp-shadow sapp-font sapp-bg">
                     <header class="uk-comment-header uk-grid-small uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
                             <img class="uk-comment-avatar uk-border-circle" th:src="${recensione.adozione.utente.fotoCodificata}" width="50" height="50" alt="">
@@ -354,15 +355,23 @@
         <p>Non ci sono ancora recensioni per questo albero. Sii il primo a lasciare una recensione!</p>
     </div>
 </div>
-
-<footer class="uk-text-center uk-padding uk-background-muted uk-margin">
-    <div class="uk-container">
-        <img src="path/to/your/logo.png" alt="Logo" class="uk-margin-small-top" width="100" height="auto">
-        <p class="uk-text-large">Una creazione JAITA128</p>
-        <a th:href="@{/chisiamo}">Chi siamo</a>
+</main>
+<footer class="uk-margin-xlarge-top uk-width-1-1 uk-flex uk-flex-center@m uk-flex-right@l">
+    <div class="uk-width-1-6 uk-padding sapp-angle sapp-shadow sapp-bg uk-position-relative uk-margin-medium-right uk-margin-medium-bottom">
+        <img src="../images/sapplylogo.png" alt="Logo" class="uk-margin-small-bottom uk-width-3-6" height="auto">
+        <p class="uk-text-large sapp-font uk-text-right">
+            è una creazione <a th:href="@{/chisiamo}">JAITA128</a>
+        </p>
     </div>
 </footer>
 
+<div class="parallax">
+    <img src="../images/layer4.png" class="layer layer1" alt="Livello 1">
+    <img src="../images/layer3.png" class="layer layer2" alt="Livello 2">
+    <img src="../images/layer2.png" class="layer layer3" alt="Livello 3">
+    <img src="../images/layer1.png" class="layer layer4" alt="Livello 4">
+</div>
+<script th:src="@{js/parallax.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
 </body>

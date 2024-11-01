@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, html {
+            margin: 0;
+        }
+
+        .parallax {
+            position: fixed;
+            bottom: 0;
+            width: 100%;  /* Riduzione della dimensione */
+            height: 100%; /* Riduzione della dimensione */
+            overflow: hidden;
+        }
+
+
+        .layer {
+            position: absolute;
+            bottom: -4%;
+            left: -4%;
+            width: 108%;
+            height: auto;
+            transition: transform 0.1s ease;
+        }
+                                                        /* Cazzo è l'olio?! */
+        .layer1 { transform: translateX(0);}
+        .layer2 { transform: translateX(0);}
+        .layer3 { transform: translateX(0);}
+        .layer4 { transform: translateX(0);}
+
+    </style>
+</head>
+<body>
+<div class="parallax">
+    <img src="layer4.png" class="layer layer1" alt="Livello 1">
+    <img src="layer3.png" class="layer layer2" alt="Livello 2">
+    <img src="layer2.png" class="layer layer3" alt="Livello 3">
+    <img src="layer1.png" class="layer layer4" alt="Livello 4">
+</div>
+<script th:src="@{js/parallax.js}"></script>
+<script>
+    document.addEventListener('mousemove', (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // Calcola le percentuali del movimento orizzontale e verticale
+        const percentageX = (mouseX / windowWidth) - 0.5;
+        const percentageY = (mouseY / windowHeight) - 0.5;
+
+        // Muovi i livelli in base alla profondità sia in orizzontale che verticale
+        document.querySelector('.layer1').style.transform = `translate(${percentageX * 90}px, ${percentageY * 45}px)`;
+        document.querySelector('.layer2').style.transform = `translate(${percentageX * 70}px, ${percentageY * 35}px)`;
+        document.querySelector('.layer3').style.transform = `translate(${percentageX * 50}px, ${percentageY * 25}px)`;
+        document.querySelector('.layer4').style.transform = `translate(${percentageX * 30}px, ${percentageY * 15}px)`;
+    });
+
+</script>
+</body>
+</html>
