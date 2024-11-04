@@ -209,8 +209,9 @@
     <!-- Contenitore principale per ogni continente -->
     <div th:each="continente : ${alberiPerContinente}" class="uk-container">
         <!-- Titolo del continente su un'intera riga -->
-        <h2 class="uk-heading-line uk-text-center uk-margin-large-bottom uk-margin-large-top sapp-font"><span th:text="${continente.key}"></span></h2>
-
+        <div class="uk-card uk-width-1-3 sapp-angle sapp-shadow sapp-fnt sapp-bg uk-padding uk-margin-large-bottom uk-margin-large-top">
+        <h2 class="uk-text-left sapp-fnt"><strong><span th:text="${continente.key}"></span></strong></h2>
+        </div>
         <!-- Griglia delle card degli alberi, disposte su 2 o 3 colonne -->
         <div class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: pack">
             <!-- Itera su ogni albero del continente per generare le card -->
@@ -235,12 +236,23 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+<footer class="uk-margin-xlarge-top uk-width-1-1 uk-flex uk-flex-center">
+    <div class="uk-width-1-2 uk-padding sapp-angle sapp-shadow sapp-bg-light uk-position-relative uk-margin-medium-bottom uk-flex uk-flex-middle ">
+        <img src="../images/sapplylogo.png" alt="Logo" class="uk-width-1-5 uk-inline">
+        <span class="uk-text-large sapp-fnt uk-text-center uk-width-3-5 uk-inline">
+       <strong>è una creazione JAITA128</strong>
+      </span>
+        <a th:href="@{/chisiamo}" class="uk-button sapp-font sapp-btn sapp-blue sapp-shadow uk-width-1-5 uk-inline">Il nostro team</a>
+=======
 <footer class="uk-margin-xlarge-top uk-width-1-1 uk-flex uk-flex-center@m uk-flex-right@l">
     <div class="uk-width-1-6 uk-padding sapp-angle sapp-shadow sapp-bg uk-position-relative uk-margin-medium-right uk-margin-medium-bottom">
         <img src="../images/sapplylogo.png" alt="Logo" class="uk-margin-small-bottom uk-width-3-6" height="auto">
         <p class="uk-text-large sapp-font uk-text-right">
-            è una creazione <a th:href="@{/chisiamo}">JAITA128</a>
+            è una creazione JAITA128
+            <a class="uk-button sapp-btn sapp-green sapp-shadow" th:href="@{/chisiamo}">Il nostro team</a>
         </p>
+>>>>>>> f21f42ce5367a0392ce834b0b80e0412adf2df49
     </div>
 </footer>
 

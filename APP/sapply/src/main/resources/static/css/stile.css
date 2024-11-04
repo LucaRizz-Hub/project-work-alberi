@@ -161,6 +161,9 @@ body {
 .sapp-bg{
     background-color: #fcfcfc;
 }
+.sapp-bg-light{
+    background-color: rgba(252, 252, 252, 0.60);
+}
 .sapp-green:hover{
     background-color: #49887b;
 }
@@ -235,8 +238,6 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
-    background-color:white;
-
 }
 
 .albero {
