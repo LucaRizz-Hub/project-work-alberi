@@ -162,7 +162,8 @@ body {
     background-color: #fcfcfc;
 }
 .sapp-bg-light{
-    background-color: rgba(252, 252, 252, 0.60);
+    background-color: rgba(252, 252, 252, 0.80);
+    backdrop-filter: blur(8px);
 }
 .sapp-green:hover{
     background-color: #49887b;
@@ -280,7 +281,8 @@ body {
     left: -4%;
     width: 108%;
     height: auto;
-    transition: transform 0.1s ease;
+    /* Cazzo è l'olio?! */
+   transition: transform 5ms linear;
 }
 /* Cazzo è l'olio?! */
 .layer1 { transform: translateX(0);}
